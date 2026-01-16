@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sjednocený kompletní přehled VŠ s tvůrčími obory</title>
+    <style>
+        :root {
+            --primary: #1a1a1a;
+            --accent: #e63946;
+            --bg: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-grey: #444;
+            --border-radius: 8px;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: var(--primary);
+            background-color: var(--bg);
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: white;
+            box-shadow: 0 0 30px rgba(0,0,0,0.08);
+        }
+
+        header {
+            text-align: center;
+            padding-bottom: 40px;
+            border-bottom: 3px solid var(--primary);
+            margin-bottom: 50px;
+        }
+
+        h1 {
+            font-size: 2.6rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--primary);
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-top: 80px;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-top: 0;
+            margin-bottom: 5px;
+            color: var(--primary);
+            font-weight: 800;
+        }
+        
+        h4 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            margin-top: 20px;
+            color: #000;
+            text-transform: uppercase;
+            border-left: 4px solid #ccc;
+            padding-left: 10px;
+        }
+
+        p { margin-bottom: 10px; }
+
+        /* --- STYLY PRO ROZCESTNÍK --- */
+        .nav-wrapper {
+            display: grid;
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+
+        .nav-section {
+            background-color: #fff;
+            padding: 25px;
+            border-radius: var(--border-radius);
+            border: 1px solid #e0e0e0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+
+        .section-type { border-top: 5px solid #2196F3; } 
+        .section-field { border-top: 5px solid #4CAF50; } 
+        .section-diff { border-top: 5px solid #FF9800; } 
+        .section-city { border-top: 5px solid #9C27B0; } 
+
+        .nav-header {
+            font-weight: 900;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            display: block;
+            color: #222;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .nav-group { margin-bottom: 20px; }
+        .nav-group-title {
+            font-weight: bold;
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 8px;
+            display: block;
+            text-transform: uppercase;
+        }
+
+        .button-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .nav-btn {
+            display: inline-block;
+            padding: 8px 14px;
+            background-color: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            text-decoration: none;
+            color: var(--primary);
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .nav-btn:hover {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        /* --- KARTY ŠKOL (DETAILNÍ) --- */
+        .school-card {
+            border: 1px solid #e0e0e0;
+            border-radius: var(--border-radius);
+            padding: 35px;
+            margin-bottom: 40px;
+            background: var(--card-bg);
+            scroll-margin-top: 30px;
+            position: relative;
+        }
+
+        .school-card:target {
+            border: 2px solid var(--accent);
+            box-shadow: 0 0 25px rgba(230, 57, 70, 0.15);
+        }
+
+        .school-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 15px;
+        }
+
+        .meta-tag {
+            padding: 5px 12px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .tag-elite { background: #e3f2fd; color: #0d47a1; border: 1px solid #bbdefb; }
+        .tag-uni { background: #e8f5e9; color: #1b5e20; border: 1px solid #c8e6c9; }
+        .tag-tech { background: #fff3e0; color: #e65100; border: 1px solid #ffe0b2; }
+        .tag-private { background: #f3e5f5; color: #4a148c; border: 1px solid #e1bee7; }
+        .tag-ped { background: #fce4ec; color: #880e4f; border: 1px solid #f8bbd0; }
+
+        /* Mřížka pro rychlá data */
+        .quick-facts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 25px;
+            border: 1px solid #eee;
+        }
+
+        .fact-item { font-size: 0.9rem; }
+        .fact-item strong { display: block; color: var(--accent); font-size: 0.8rem; text-transform: uppercase; }
+
+        .content-block { margin-bottom: 20px; }
+        
+        .stats-box {
+            background: #fff8f8;
+            padding: 20px;
+            border-radius: 6px;
+            margin-top: 30px;
+            border-left: 5px solid var(--accent);
+            font-size: 0.95rem;
+        }
+
+        .stats-box strong { color: var(--accent); }
+
+        .web-link {
+            font-size: 0.9rem;
+            color: #007bff;
+            text-decoration: none;
+            margin-left: 15px;
+            font-weight: normal;
+        }
+
+        .back-link {
+            display: block;
+            margin-top: 20px;
+            text-align: right;
+            font-size: 0.85rem;
+            color: #999;
+            text-decoration: none;
+        }
+        
+        .warning { color: #d32f2f; font-weight: bold; }
+        .highlight { background-color: #fff3cd; padding: 0 4px; }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Sjednocený kompletní přehled VŠ<br>s tvůrčími obory</h1>
+        <p>Detailní průvodce pro uchazeče (Aktualizace pro rok 2026)</p>
+    </header>
+
+    <div class="nav-wrapper">
+        <!-- 1. HLAVNÍ ROZCESTNÍK -->
+        <div class="nav-section section-type">
+            <span class="nav-header">1. Hlavní rozcestník (Podle typu školy)</span>
+            <div class="nav-group">
+                <span class="nav-group-title">Elitní umělecké akademie</span>
+                <div class="button-grid">
+                    <a href="#avu" class="nav-btn">AVU Praha</a>
+                    <a href="#umprum" class="nav-btn">UMPRUM</a>
+                    <a href="#famu" class="nav-btn">FAMU</a>
+                    <a href="#jamu" class="nav-btn">JAMU (Scénografie)</a>
+                </div>
+            </div>
+            <div class="nav-group">
+                <span class="nav-group-title">Univerzitní umělecké fakulty</span>
+                <div class="button-grid">
+                    <a href="#favu" class="nav-btn">FaVU VUT Brno</a>
+                    <a href="#fmk" class="nav-btn">FMK UTB Zlín</a>
+                    <a href="#fud" class="nav-btn">FUD UJEP Ústí</a>
+                    <a href="#fdu" class="nav-btn">Sutnarka Plzeň</a>
+                </div>
+            </div>
+            <div class="nav-group">
+                <span class="nav-group-title">Specializované fakulty</span>
+                <div class="button-grid">
+                    <a href="#fua" class="nav-btn">FUA TUL Liberec</a>
+                    <a href="#ft-tul" class="nav-btn">FT TUL (Textil)</a>
+                    <a href="#fu-ou" class="nav-btn">FU OU Ostrava</a>
+                    <a href="#uhk" class="nav-btn">UHK (Grafika/Textil)</a>
+                    <a href="#upce-res" class="nav-btn">UPCE Restaurování</a>
+                    <a href="#upce-poly" class="nav-btn">UPCE Polygrafie</a>
+                </div>
+            </div>
+            <div class="nav-group">
+                <span class="nav-group-title">Architektura a technika</span>
+                <div class="button-grid">
+                    <a href="#fa-cvut" class="nav-btn">FA ČVUT Praha</a>
+                    <a href="#fa-vut" class="nav-btn">FA VUT Brno</a>
+                    <a href="#mendelu" class="nav-btn">MENDELU Brno</a>
+                    <a href="#vspj" class="nav-btn">VŠPJ Jihlava</a>
+                    <a href="#vscht" class="nav-btn">VŠCHT Restaurování</a>
+                </div>
+            </div>
+            <div class="nav-group">
+                <span class="nav-group-title">Pedagogické a filozofické fakulty</span>
+                <div class="button-grid">
+                    <a href="#pedf-uk" class="nav-btn">PedF UK Praha</a>
+                    <a href="#pedf-mu" class="nav-btn">PedF MU Brno</a>
+                    <a href="#pedf-upol" class="nav-btn">PedF UPOL Olomouc</a>
+                    <a href="#pedf-ou" class="nav-btn">PedF OU Ostrava</a>
+                    <a href="#ff-fakulty" class="nav-btn">Filozofické fakulty (Teorie)</a>
+                </div>
+            </div>
+             <div class="nav-group">
+                <span class="nav-group-title">Fotografie a Soukromé školy</span>
+                <div class="button-grid">
+                    <a href="#itf" class="nav-btn">ITF Opava (Dálkové)</a>
+                    <a href="#soukrome" class="nav-btn">Soukromé (VŠKK, ADI, PCU...)</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. ROZCESTNÍK ZAMĚŘENÍ -->
+        <div class="nav-section section-field">
+            <span class="nav-header">2. Podle zaměření oboru</span>
+            <div class="button-grid">
+                <a href="#umprum" class="nav-btn">Grafický design</a>
+                <a href="#famu" class="nav-btn">Animace & Film</a>
+                <a href="#favu" class="nav-btn">Game Design</a>
+                <a href="#avu" class="nav-btn">Volné umění</a>
+                <a href="#fua" class="nav-btn">Architektura</a>
+                <a href="#ft-tul" class="nav-btn">Móda a Textil</a>
+                <a href="#itf" class="nav-btn">Fotografie</a>
+                <a href="#upce-res" class="nav-btn">Restaurování</a>
+            </div>
+        </div>
+
+        <!-- 3. ROZCESTNÍK OBTÍŽNOST -->
+        <div class="nav-section section-diff">
+            <span class="nav-header">3. Podle obtížnosti přijetí</span>
+            <div class="button-grid">
+                <a href="#umprum" class="nav-btn">Extrémní (<15%)</a>
+                <a href="#fmk" class="nav-btn">Vysoká (15-30%)</a>
+                <a href="#fud" class="nav-btn">Střední (30-50%)</a>
+                <a href="#soukrome" class="nav-btn">Vysoká šance (>60%)</a>
+            </div>
+        </div>
+        
+        <!-- 4. ROZCESTNÍK MĚSTA -->
+        <div class="nav-section section-city">
+            <span class="nav-header">4. Podle měst</span>
+            <div class="button-grid">
+                <a href="#avu" class="nav-btn">Praha</a>
+                <a href="#favu" class="nav-btn">Brno</a>
+                <a href="#fmk" class="nav-btn">Zlín</a>
+                <a href="#fdu" class="nav-btn">Plzeň</a>
+                <a href="#fud" class="nav-btn">Ústí nad Labem</a>
+                <a href="#fua" class="nav-btn">Liberec</a>
+                <a href="#fu-ou" class="nav-btn">Ostrava</a>
+                <a href="#itf" class="nav-btn">Opava</a>
+                <a href="#pedf-upol" class="nav-btn">Olomouc</a>
+                <a href="#uhk" class="nav-btn">Hradec Králové</a>
+                <a href="#upce-poly" class="nav-btn">Pardubice</a>
+                <a href="#upce-res" class="nav-btn">Litomyšl</a>
+                <a href="#vspj" class="nav-btn">Jihlava</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- === OBSAH PUBLIKACE === -->
+
+    <h2>1. Elitní umělecké akademie</h2>
+    
+    <article id="avu" class="school-card">
+        <div class="school-header">
+            <div>
+                <h3>AVU – Akademie výtvarných umění v Praze</h3>
+                <a href="https://www.avu.cz" target="_blank" class="web-link">🔗 Web AVU</a>
+            </div>
+            <span class="meta-tag tag-elite">Elite (10–15 %)</span>
+        </div>
+        
+        <div class="quick-facts">
+            <div class="fact-item"><strong>Přihláška</strong>1. 10. – 30. 11. 2025</div>
+            <div class="fact-item"><strong>Poplatek</strong>960 Kč (nevratný)</div>
+            <div class="fact-item"><strong>Termín zkoušek</strong>Leden 2026 (2. kolo)</div>
+        </div>
+
+        <div class="content-block">
+            <h4>Obory a Ateliéry</h4>
+            <p>Malířství (I–IV), Sochařství (I–II), Kresba, Grafika (I–II), Intermédia (I–II), Nová média (I–II).<br>
+            <strong>Specifické:</strong> Škola architektury, Restaurování malířských děl, Restaurování sochařských děl.</p>
+        </div>
+
+        <div class="content-block">
+            <h4>Požadavky na Portfolio</h4>
+            <p><strong>Formát:</strong> Digitální (PDF do 100 MB / videa) nahrávané do systému v 1. kole.<br>
+            <strong>Rozsah:</strong> 15–20 děl (reprezentativní výběr za posl. 2–3 roky).<br>
+            <strong>U Restaurování:</strong> Vyžadována dokumentace kopií, studijních kreseb a řemeslných prací prokazující cit pro materiál.<br>
+            <strong>Intermédia:</strong> Odkazy na Vimeo/YouTube. Součástí je motivační dopis.</p>
+        </div>
+
+        <div class="content-block">
+            <h4>Průběh talentové zkoušky</h4>
+            <p><strong>1. kolo (Prosinec):</strong> Distanční hodnocení portfolií (postupuje/nepostupuje).<br>
+            <strong>2. kolo (Leden):</strong> Prezenční, trvá 3–4 dny. Obsah: Kresba/malba/modelování podle živého modelu (cca 4–8 hodin), volná kompozice na zadané téma (testuje kreativitu), test z kulturního přehledu. Zakončeno pohovorem.</p>
+        </div>
+
+        <div class="content-block">
+            <h4>Konzultace</h4>
+            <p>Probíhají individuálně v <strong>říjnu a listopadu 2025</strong>.<br>
+            <span class="warning">Strategická poznámka:</span> Účast na konzultacích je zcela zásadní. Pro uchazeče, kteří nebyli s pedagogy v kontaktu, je šance na přijetí statisticky minimální.</p>
+        </div>
+
+        <div class="stats-box">
+            <strong>Statistika přijetí:</strong> Dlouhodobě 10–15 %. V ateliérech malby často přes 100 uchazečů na 4–6 míst.
+        </div>
+        <a href="#" class="back-link">↑ Zpět na rozcestník</a>
+    </article>
+
+    <article id="umprum" class="school-card">
+        <div class="school-header">
+            <div>
+                <h3>UMPRUM – Vysoká škola uměleckoprůmyslová</h3>
+                <a href="https://www.umprum.cz" target="_blank" class="web-link">🔗 Web UMPRUM</a>
+            </div>
+            <span class="meta-tag tag-elite">Extrémní výběr (9–12 %)</span>
+        </div>
+
+        <div class="quick-facts">
+            <div class="fact-item"><strong>Přihláška (Praxe)</strong>Do 30. 11. 2025</div>
+            <div class="fact-item"><strong>Přihláška (Teorie)</strong>Do 31. 3. 2026</div>
+            <div class="fact-item"><strong>Poplatek</strong>990 Kč</div>
+        </div>
+
+        <div class="content-block">
+            <h4>Obory</h4>
+            <p>Architektura (A1–A4), Design (Průmyslový, Nábytek, Produkt), Užité umění (Sklo, Keramika, K.O.V., Móda, Textil), Grafika (Design, Písmo, Ilustrace, Film, Foto), Teorie umění.</p>
+        </div>
+
+        <div class="content-block">
+            <h4>Portfolio</h4>
+            <p><strong>Formát:</strong> Digitální (PDF do 60 MB).<br>
+            <strong>Rozsah:</strong> 15–20 projektů. Musí obsahovat finální práce i skici a proces.<br>
+            <strong>Specifika:</strong> U grafického designu se vyžadují ukázky typografie a sazby. U architektury prostorové studie. Důraz na vizuální čistotu prezentace.</p>
+        </div>
+
+        <div class="content-block">
+            <h4>Talentové zkoušky</h4>
+            <p><strong>1. kolo (Prosinec):</strong> Hodnocení portfolií.<br>
+            <strong>2. kolo (Únor 2026):</strong> Prezenční. Kresba podle skutečnosti (zátiší, portrét) + specifický oborový úkol (např. "navrhněte objekt z papíru"). Test z dějin umění a cizího jazyka.</p>
+        </div>
+
+        <div class="content-block">
+            <h4>Konzultace</h4>
+            <p>Důrazně doporučeny (říjen–listopad). Škola zveřejňuje FAQ a termíny na webu.</p>
+        </div>
+
+        <div class="stats-box">
+            <strong>Statistika:</strong> Úspěšnost 9–12 %. Na Grafický design až 40 uchazečů na 1 místo.
+        </div>
+        <a href="#" class="back-link">↑ Zpět na rozcestník</a>
+    </article>
+
+    <article id="famu" class="school-card">
+        <div class="school-header">
+            <div>
+                <h3>FAMU – Filmová a televizní fakulta AMU</h3>
+                <a href="https://www.famu.cz" target="_blank" class="web-link">🔗 Web FAMU</a>
+            </div>
+            <span class="meta-tag tag-elite">Velmi nízká průchodnost</span>
+        </div>
+
+        <div class="quick-facts">
+            <div class="fact-item"><strong>Přihláška</strong>Listopad/Prosinec 2025</div>
+            <div class="fact-item"><strong>Typ studia</strong>BcA., MgA.</div>
+        </div>
+
+        <div class="content-block">
+            <h4>Obory a Specifická portfolia</h4>
+            <p><strong>Fotografie:</strong> Povinně 2 ucelené soubory (8–12 foto) + doprovodný soubor (do 5 ks) + maketa autorské publikace (dummy).<br>
+            <strong>Animace:</strong> 10–20 výtvarných prací, storyboard, námět a synopse.<br>
+            <strong>Herní design:</strong> Design dokument (GDD), prototyp hry (link) nebo vizuální koncepty.<br>
+            <strong>Režie:</strong> Vlastní film (do 20 min), literární práce, fotopříběh.</p>
+        </div>
+
+        <div class="content-block">
+            <h4>Průběh zkoušek</h4>
+            <p>Vícekolové řízení. U herního designu testy logického myšlení a týmové spolupráce. U ostatních oborů analýzy filmů a testy kulturního přehledu.</p>
+        </div>
+
+        <div class="content-block">
+            <h4>Konzultace</h4>
+            <p>Zcela zásadní, probíhají v <strong>říjnu a listopadu</strong>. Bez konzultace je šance minimální.</p>
+        </div>
+        <a href="#" class="back-link">↑ Zpět na rozcestník</a>
+    </article>
+
+    <article id="jamu" class="school-card">
+        <div class="school-header">
+            <div>
+                <h3>JAMU – Divadelní fakulta (Brno)</h3>
+                <a href="https://df.jamu.cz" target="_blank" class="web-link">🔗 Web DF JAMU</a>
+            </div>
+            <span class="meta-tag tag-elite">Scénografie</span>
+        </div>
+
+        <div class="quick-facts">
+            <div class="fact-item"><strong>Přihláška</strong>Do 31. 3. 2026</div>
+            <div class="fact-item"><strong>Lokace</strong>Brno</div>
+        </div>
+
+        <div class="content-block">
+            <h4>Obor Scénografie</h4>
+            <p><strong>Portfolio:</strong> 15–20 listů A3/A2. Kresba figury, studie prostoru. <span class="highlight">Povinný úkol:</span> Návrh scény na konkrétní zadanou hru (půdorys, řez, model).<br>
+            <strong>Konzultace:</strong> Nezbytné. DOD (listopad/leden).</p>
+        </div>
+         <div class="content-block">
+            <h4>Obor Audiovizuální tvorba</h4>
+            <p><strong>Portfolio:</strong> Autorské video (max 10 min) nebo scénář + seznam literatury/filmů.</p>
+        </div>
+
+        <div class="stats-box">
+            <strong>Statistika:</strong> Scénografie je malý ateliér (4–6 studentů), úspěšnost 15–20 %. Audiovize 10–15 %.
+        </div>
+        <a href="#" class="back-link">↑ Zpět na rozcestník</a>
+    </article>
+
+
+    <h2>2. Univerzitní umělecké fakulty</h2>
+
+    <article id="favu" class="school-card">
+        <div class="school-header">
+            <div>
+                <h3>FaVU VUT – Fakulta výtvarných umění Brno</h3>
+                <a href="https://www.favu.vut.cz" target="_blank" class="web-link">🔗 Web FaVU</a>
+            </div>
+            <span class="meta-tag tag-uni">Technicko-umělecká</span>
+        </div>
+
+        <div class="quick-facts">
+            <div class="fact-item"><strong>Přihláška</strong>1. 10. – 30. 11. 2025</div>
+            <div class="fact-item"><strong>Poplatek</strong>700 Kč</div>
+            <div class="fact-item"><strong>Zkoušky</strong>Leden/Únor</div>
+        </div>
+
+        <div class="content-block">
+            <h4>Obory</h4>
+            <p>Volné umění (Malba, Socha, Performance, Video), Design (Grafický, Produktový), <strong>Herní média</strong> (Game Design).</p>
+        </div>
+
+        <div class="content-block">
+            <h4>Portfolio</h4>
+            <p><strong>Formát:</strong> Digitální ZIP do 900 MB (velmi benevolentní, vhodné pro videa/aplikace).<br>
+            <strong>Obsah:</strong> 15–25 prací za posl. 2–3 roky, popisky, motivační text. U herního designu spustitelné buildy.</p>
+        </div>
+
+        <div class="content-block">
+            <h4>Průběh zkoušek</h4>
+            <p>2. kolo zahrnuje 4 praktické úkoly (domácí i ateliérové) a test z dějin umění a kulturního rozhledu.</p>
+        </div>
+
+        <div class="content-block">
+            <h4>Konzultace</h4>
+            <p>Probíhají moderně přes <strong>Discord server fakulty</strong>, dále na DOD a v ateliérech.</p>
+        </div>
+
+        <div class="stats-box">
+            <strong>Statistika:</strong> Celková úspěšnost 10–13 %.
+        </div>
+        <a href="#" class="back-link">↑ Zpět na rozcestník</a>
+    </article>
+
+    <article id="fmk" class="school-card">
+        <div class="school-header">
+            <div>
+                <h3>FMK UTB – Fakulta multimediálních komunikací Zlín</h3>
+                <a href="https://fmk.utb.cz" target="_blank" class="web-link">🔗 Web FMK</a>
+            </div>
+            <span class="meta-tag tag-uni">Design & Marketing</span>
+        </div>
+
+        <div class="quick-facts">
+            <div class="fact-item"><strong>Přihláška</strong>Do 30. 11. 2025</div>
+            <div class="fact-item"><strong>Poplatek</strong>Cca 800–990 Kč</div>
+        </div>
+
+        <div class="content-block">
+            <h4>Detaily dle specializací</h4>
+            <ul>
+                <li><strong>Animace:</strong> Storyboardy, ukázky animací, námět. Zkouška: Animace na téma.</li>
+                <li><strong>Game Design:</strong> GDD, 3–5 projektů, vizuály, prototypy. Zkouška: Herní koncept, logické úkoly.</li>
+                <li><strong>Grafický/Digitální design:</strong> Plakáty, UI/UX, typo. Zkouška: Redesign loga/webu.</li>
+                <li><strong>Produkt/Oděv/Sklo:</strong> Modely, technické výkresy. Zkouška: Kresba objektu, návrh.</li>
+                <li><strong>Audiovize:</strong> Scénáře, videa. Zkouška: Střih, zvuková kompozice.</li>
+            </ul>
+        </div>
+
+        <div class="content-block">
+            <h4>Konzultace</h4>
+            <p>Fakulta nabízí <strong>individuální konzultace zdarma</strong> dle domluvy s pedagogy.</p>
+        </div>
+
+        <div class="stats-box">
+            <strong>Statistika:</strong> Animace cca 20 % (100/20).
+        </div>
+        <a href="#" class="back-link">↑ Zpět na rozcestník</a>
+    </article>
+
+    <article id="fud" class="school-card">
+        <div class="school-header">
+            <div>
+                <h3>FUD UJEP – Fakulta umění a designu Ústí n. L.</h3>
+                <a href="https://fud.ujep.cz" target="_blank" class="web-link">🔗 Web FUD</a>
+            </div>
+            <span class="meta-tag tag-uni">Střední náročnost</span>
+        </div>
+
+        <div class="quick-facts">
+            <div class="fact-item"><strong>Přihláška</strong>Do 30. 11. 2025</div>
+            <div class="fact-item"><strong>Poplatek</strong>800 Kč</div>
+            <div class="fact-item"><strong>Termín</strong>15.–16. ledna 2026</div>
+        </div>
+
+        <div class="content-block">
+            <h4>Specifikum portfolia</h4>
+            <p><span class="warning">FYZICKÉ ODEVZDÁNÍ!</span> Portfolio se odevzdává osobně 1. den zkoušky. Požadují se desky (nerolovat!), cca 20 prací a <strong>skicáky</strong> (velmi důležité).</p>
+        </div>
+
+        <div class="content-block">
+            <h4>Konzultace</h4>
+            <p>Fakulta nabízí kurz kresby pro veřejnost a zveřejňuje kontakty pro individuální domluvu.</p>
+        </div>
+
+        <div class="stats-box">
+            <strong>Statistika:</strong> Cca 40 % přijatých.
+        </div>
+        <a href="#" class="back-link">↑ Zpět na rozcestník</a>
+    </article>
+
+    <article id="fdu" class="school-card">
+        <div class="school-header">
+            <div>
+                <h3>FDU ZČU – „Sutnarka“ Plzeň</h3>
+                <a href="https://fdu.zcu.cz" target="_blank" class="web-link">🔗 Web Sutnarka</a>
+            </div>
+            <span class="meta-tag tag-uni">Plzeň</span>
+        </div>
+
+        <div class="quick-facts">
+            <div class="fact-item"><strong>Přihláška</strong>Do 30. 11. 2025</div>
+            <div class="fact-item"><strong>Poplatek</strong>Cca 700 Kč</div>
+        </div>
+
+        <div class="content-block">
+            <h4>Obory</h4>
+            <p>Ilustrace, Komiks (prestižní), Animace, Grafický design, Produkt, Šperk.</p>
+        </div>
+
+        <div class="content-block">
+            <h4>Průběh zkoušek</h4>
+            <p><strong>1. kolo:</strong> Elektronické portfolio (PDF do 60 MB).<br>
+            <strong>2. kolo:</strong> Třídenní prezenční zkouška. Nutno přinést fyzické originály (cca 20 ks) + skicáky.</p>
+        </div>
+
+        <div class="content-block">
+            <h4>Konzultace</h4>
+            <p>Fakulta pořádá tzv. <strong>DEMO přijímačky</strong> (zkoušky nanečisto) a DOD.</p>
+        </div>
+
+        <div class="stats-box">
+            <strong>Statistika:</strong> Úspěšnost cca 29 %.
+        </div>
+        <a href="#" class="back-link">↑ Zpět na rozcestník</a>
+    </article>
+
+
+    <h2>3. Specializované fakulty</h2>
+
+    <article id="fua" class="school-card">
+        <div class="school-header">
+            <div>
+                <h3>FUA TUL – Umění a architektura Liberec</h3>
+                <a href="http://fua.tul.cz/" target="_blank" class="web-link">🔗 Web FUA</a>
+            </div>
+            <span class="meta-tag tag-tech">Rodinná atmosféra</span>
+        </div>
+
+        <div class="quick-facts">
+            <div class="fact-item"><strong>Přihláška</strong>Do 30. 11. 2025</div>
+            <div class="fact-item"><strong>Zkoušky</strong>Test z dějin + Matematika (Arch.)</div>
+        </div>
+
+        <div class="content-block">
+            <h4>Portfolio</h4>
+            <p>Kresby, návrhy, prostorové studie (10–15 prací formátu A3). Nechtějí jen technické výkresy, hledají kreativní myšlení a práci s prostorem.</p>
+        </div>
+
+        <div class="content-block">
+            <h4>Konzultace</h4>
+            <p>Workshopy, veřejné akce v rámci <strong>Art Week Liberec</strong>. Na DOD probíhají konzultace portfolií se studenty a pedagogy.</p>
+        </div>
+
+        <div class="stats-box">
+            <strong>Statistika:</strong> Šance 30–35 %. Ročně se hlásí 160–200, berou 50–60.
+        </div>
+        <a href="#" class="back-link">↑ Zpět na rozcestník</a>
+    </article>
+
+    <article id="ft-tul" class="school-card">
+        <div class="school-header">
+            <div>
+                <h3>FT TUL – Textilní fakulta Liberec</h3>
+                <a href="https://ft.tul.cz" target="_blank" class="web-link">🔗 Web FT TUL</a>
+            </div>
+            <span class="meta-tag tag-tech">Textil & Nano</span>
+        </div>
+
+        <div class="quick-facts">
+            <div class="fact-item"><strong>Přihláška</strong>Do 28. 2. 2026</div>
+            <div class="fact-item"><strong>Zkoušky</strong>24.–25. 3. 2026</div>
+        </div>
+
+        <div class="content-block">
+            <h4>Obor Návrhářství</h4>
+            <p>Textil, Oděv, Sklo, Šperk. Unikátní propojení s technologiemi (nanovlákna).</p>
+        </div>
+
+        <div class="content-block">
+            <h4>Portfolio</h4>
+            <p>Fyzické, přináší se k talentové zkoušce (15–20 ks). Kresba, malba, návrhy dezénů, foto realizací.</p>
+        </div>
+        
+        <div class="content-block">
+            <h4>Konzultace</h4>
+            <p>ANO. Fakulta pořádá kurzy i konzultace. Pro sklo/šperk je návštěva ateliéru téměř nutností.</p>
+        </div>
+
+        <div class="stats-box">
+            <strong>Statistika:</strong> Úspěšnost 40–50 %. "Síto" je často až následné studium (technologie).
+        </div>
+        <a href="#" class="back-link">↑ Zpět na rozcestník</a>
+    </article>
+
+    <article id="fu-ou" class="school-card">
+        <div class="school-header">
+            <div>
+                <h3>FU OU – Fakulta umění Ostrava</h3>
+                <a href="https://fu.osu.cz" target="_blank" class="web-link">🔗 Web FU OU</a>
+            </div>
+            <span class="meta-tag tag-uni">Ostrava</span>
+        </div>
+
+        <div class="quick-facts">
+            <div class="fact-item"><strong>Přihláška</strong>Do 31. 3. 2026</div>
+            <div class="fact-item"><strong>Poplatek</strong>0 Kč (často zdarma!)</div>
+            <div class="fact-item"><strong>Zkoušky</strong>Duben/Květen</div>
+        </div>
+
+        <div class="content-block">
+            <h4>Obory</h4>
+            <p>Volné umění, Intermédia (Video, Performance), Hudba.</p>
+        </div>
+
+        <div class="content-block">
+            <h4>Portfolio</h4>
+            <p>Elektronické (PDF/odkazy), 10–20 prací (dokumentace projektů).</p>
+        </div>
+
+        <div class="stats-box">
+            <strong>Statistika:</strong> Šance 30–40 % (nabírají 10–15 studentů ze 40).
+        </div>
+        <a href="#" class="back-link">↑ Zpět na rozcestník</a>
+    </article>
+
+    <article id="uhk" class="school-card">
+        <div class="school-header">
+            <div>
+                <h3>UHK – Pedagogická fakulta (Hradec Králové)</h3>
+                <a href="https://www.uhk.cz" target="_blank" class="web-link">🔗 Web UHK</a>
+            </div>
+            <span class="meta-tag tag-uni">Hradec Králové</span>
+        </div>
+
+        <div class="quick-facts">
+            <div class="fact-item"><strong>Přihláška</strong>Do 31. 3. 2026</div>
+            <div class="fact-item"><strong>Poplatek</strong>Cca 600–650 Kč</div>
+            <div class="fact-item"><strong>Zkoušky</strong>Květen/Červen 2026</div>
+        </div>
+
+        <div class="content-block">
+            <h4>Obory</h4>
+            <p><strong>Grafická a intermediální tvorba (Bc.):</strong> Prestižní "ne-učitelský" obor.<br>
+            <strong>Textilní tvorba (Bc.):</strong> Techniky a design.</p>
+        </div>
+
+        <div class="content-block">
+            <h4>Portfolio (Kritické varování!)</h4>
+            <p>20 domácích prací v pevných deskách. <span class="warning">NEROLOVAT DO TUBUSU!</span> (Může vést k vyloučení).<br>
+            <strong>Grafika:</strong> Min. 10 studijních kreseb (portrét/figura).<br>
+            <strong>Textil:</strong> Kresby, malby, fotodokumentace.</p>
+        </div>
+
+        <div class="content-block">
+            <h4>Průběh zkoušek</h4>
+            <p><strong>Grafika:</strong> Kresba portrétu dle modelu (životní velikost), volná kompozice, pohovor.<br>
+            <strong>Textil:</strong> Kresba zátiší, malířská kompozice (jednodenní maraton).</p>
+        </div>
+
+        <div class="stats-box">
+            <strong>Statistika:</strong> Grafika 23–30 %, Textil 44 %.
+        </div>
+        <a href="#" class="back-link">↑ Zpět na rozcestník</a>
+    </article>
+
+    <article id="upce-res" class="school-card">
+        <div class="school-header">
+            <div>
+                <h3>UPCE – Fakulta restaurování Litomyšl</h3>
+                <a href="https://fr.upce.cz/" target="_blank" class="web-link">🔗 Web FR UPCE</a>
+            </div>
+            <span class="meta-tag tag-uni">Specifický obor</span>
+        </div>
+
+        <div class="quick-facts">
+            <div class="fact-item"><strong>Přihláška</strong>Do 29. 4. 2026</div>
+            <div class="fact-item"><strong>Poplatek</strong>650 Kč</div>
+            <div class="fact-item"><strong>Zkoušky</strong>9.–11. 6. 2026</div>
+        </div>
+
+        <div class="content-block">
+            <h4>Obory</h4>
+            <p>Restaurování nástěnné malby, kamene, papíru, knih.</p>
+        </div>
+
+        <div class="content-block">
+            <h4>Portfolio</h4>
+            <p>Fyzické (u zkoušky). 15–25 prací (věcné studie, kopie).<br>
+            <strong>Specifika:</strong> Papír vyžaduje kopii středověké miniatury a kaligrafii. Kámen vyžaduje 1 fyzický model.</p>
+        </div>
+
+        <div class="content-block">
+            <h4>Průběh zkoušek</h4>
+            <p>Vícedenní práce v ateliéru + test z dějin umění a <strong>chemie</strong>.</p>
+        </div>
+
+        <div class="stats-box">
+            <strong>Statistika:</strong> 25–30 % (cca 4 studenti na ateliér).
+        </div>
+        <a href="#" class="back-link">↑ Zpět na rozcestník</a>
+    </article>
+
+     <article id="upce-poly" class="school-card">
+        <div class="school-header">
+            <div>
+                <h3>UPCE – Fakulta chemicko-technologická (Polygrafie)</h3>
+            </div>
+            <span class="meta-tag tag-tech">Technika</span>
+        </div>
+        <div class="quick-facts">
+            <div class="fact-item"><strong>Přihláška</strong>Do 31. 3. 2026</div>
+            <div class="fact-item"><strong>Talentovky</strong>NEJSOU</div>
+        </div>
+        <div class="content-block">
+            <p>Přijetí zpravidla na základě průměru ze SŠ (chemie/matika). Šance téměř 100 %.</p>
+        </div>
+        <a href="#" class="back-link">↑ Zpět na rozcestník</a>
+    </article>
+
+    <h2>4. Architektura a technika</h2>
+
+    <article id="fa-cvut" class="school-card">
+        <div class="school-header">
+            <div>
+                <h3>FA ČVUT – Fakulta architektury Praha</h3>
+                <a href="https://www.fa.cvut.cz" target="_blank" class="web-link">🔗 Web FA ČVUT</a>
+            </div>
+            <span class="meta-tag tag-tech">Praha</span>
+        </div>
+
+        <div class="quick-facts">
+            <div class="fact-item"><strong>Přihláška</strong>Do 30. 11. 2025</div>
+            <div class="fact-item"><strong>Zkoušky</strong>Leden 2026</div>
+        </div>
+
+        <div class="content-block">
+            <h4>Portfolio</h4>
+            <p>Fyzické, předkládá se u zkoušky. <strong>Max. 15 listů A3.</strong> Školní i mimoškolní práce, skici, foto modelů.</p>
+        </div>
+
+        <div class="content-block">
+            <h4>Průběh zkoušek</h4>
+            <p>1. SCIO testy OSP (nutno splnit prosinec–leden).<br>
+            2. Talentová zkouška (kresba/kompozice + test prostorové představivosti).</p>
+        </div>
+
+        <div class="stats-box">
+            <strong>Statistika:</strong> Úspěšnost cca 42 %.
+        </div>
+        <a href="#" class="back-link">↑ Zpět na rozcestník</a>
+    </article>
+
+    <article id="fa-vut" class="school-card">
+        <div class="school-header">
+            <div>
+                <h3>FA VUT – Fakulta architektury Brno</h3>
+                <a href="https://www.fa.vutbr.cz" target="_blank" class="web-link">🔗 Web FA VUT</a>
+            </div>
+            <span class="meta-tag tag-tech">Brno</span>
+        </div>
+
+        <div class="quick-facts">
+            <div class="fact-item"><strong>Přihláška</strong>Do 3. 1. 2026</div>
+        </div>
+
+        <div class="content-block">
+            <h4>Zkoušky a Portfolio</h4>
+            <p>Portfolio digitální PDF (10–15 prací).<br>
+            <strong>Zkoušky:</strong> SCIO testy (OSP + ZSV) + tvůrčí úkol + test prostorové představivosti + pohovor.</p>
+        </div>
+
+        <div class="stats-box">
+            <strong>Statistika:</strong> Úspěšnost 30–35 %.
+        </div>
+        <a href="#" class="back-link">↑ Zpět na rozcestník</a>
+    </article>
+
+    <article id="mendelu" class="school-card">
+        <div class="school-header">
+            <div>
+                <h3>MENDELU – Design nábytku Brno</h3>
+                <a href="https://ldf.mendelu.cz" target="_blank" class="web-link">🔗 Web LDF</a>
+            </div>
+            <span class="meta-tag tag-tech">Design & Dřevo</span>
+        </div>
+
+        <div class="quick-facts">
+            <div class="fact-item"><strong>Přihláška</strong>Do 15. 4. 2026</div>
+            <div class="fact-item"><strong>Poplatek</strong>800 Kč</div>
+        </div>
+
+        <div class="content-block">
+            <h4>Portfolio (Nepovinné)</h4>
+            <p>Není podmínkou pro připuštění, ale doporučuje se přinést cca 10 ukázek k ústní zkoušce (komise přihlíží).</p>
+        </div>
+
+        <div class="content-block">
+            <h4>Průběh zkoušek</h4>
+            <p>Kresba kompozice geometrických těles, test prostorové představivosti, <span class="warning">test z matematiky/fyziky</span>.</p>
+        </div>
+
+        <div class="stats-box">
+            <strong>Statistika:</strong> Šance 30–40 % (výběrový obor na jinak dostupné fakultě).
+        </div>
+        <a href="#" class="back-link">↑ Zpět na rozcestník</a>
+    </article>
+
+    <article id="vspj" class="school-card">
+        <div class="school-header">
+            <div>
+                <h3>VŠPJ – Polygrafie Jihlava</h3>
+            </div>
+            <span class="meta-tag tag-tech">Technika</span>
+        </div>
+        <div class="quick-facts">
+            <div class="fact-item"><strong>Přihláška</strong>Až do srpna 2026</div>
+            <div class="fact-item"><strong>Talentovky</strong>NEJSOU</div>
+        </div>
+        <div class="content-block">
+            <p>Technický obor. Konzultace "Spíše NE". Šance > 70 %.</p>
+        </div>
+        <a href="#" class="back-link">↑ Zpět na rozcestník</a>
+    </article>
+
+    <article id="vscht" class="school-card">
+        <div class="school-header">
+            <div>
+                <h3>VŠCHT – Restaurování Praha</h3>
+                <a href="https://www.vscht.cz" target="_blank" class="web-link">🔗 Web VŠCHT</a>
+            </div>
+            <span class="meta-tag tag-tech">Chemie & Umění</span>
+        </div>
+
+        <div class="quick-facts">
+            <div class="fact-item"><strong>Přihláška</strong>Do 31. 3. 2026</div>
+        </div>
+
+        <div class="content-block">
+            <h4>Zkoušky a Studium</h4>
+            <p><strong>Portfolio:</strong> Není vyžadováno předem (přinést ukázky k pohovoru).<br>
+            <strong>Zkouška:</strong> Talentová (kresba) + Chemie + Biologie.<br>
+            <span class="warning">Varování:</span> Jde o vědecký přístup (konzervátorská věda). Náročná chemie v prních letech je častým důvodem ukončení studia.</p>
+        </div>
+
+        <div class="stats-box">
+            <strong>Statistika:</strong> Šance 40–50 %.
+        </div>
+        <a href="#" class="back-link">↑ Zpět na rozcestník</a>
+    </article>
+
+    <h2>5. Pedagogické a filozofické fakulty</h2>
+
+    <article id="pedf-uk" class="school-card">
+        <div class="school-header">
+            <div>
+                <h3>PedF UK – Univerzita Karlova Praha</h3>
+            </div>
+            <span class="meta-tag tag-ped">Učitelství</span>
+        </div>
+
+        <div class="quick-facts">
+            <div class="fact-item"><strong>Přihláška</strong>Do 28. 2. 2026</div>
+            <div class="fact-item"><strong>Termín</strong>Červen 2026</div>
+        </div>
+
+        <div class="content-block">
+            <h4>Portfolio a Zkoušky</h4>
+            <p>Digitální PDF (15–20 prací) nahrávané předem.<br>
+            <strong>Zkouška:</strong> Oborový test (dějiny umění) + kresebná studie dle reality.<br>
+            <strong>Konzultace:</strong> Katedra pořádá placené přípravné kurzy (CŽV).</p>
+        </div>
+
+        <div class="stats-box">
+            <strong>Statistika:</strong> Velmi náročné (< 25 %).
+        </div>
+        <a href="#" class="back-link">↑ Zpět na rozcestník</a>
+    </article>
+
+    <article id="pedf-mu" class="school-card">
+        <div class="school-header">
+            <div>
+                <h3>PedF MU – Masarykova univerzita Brno</h3>
+            </div>
+            <span class="meta-tag tag-ped">Učitelství</span>
+        </div>
+
+        <div class="quick-facts">
+            <div class="fact-item"><strong>Přihláška</strong>Do 28. 2. 2026</div>
+        </div>
+
+        <div class="content-block">
+            <p><strong>Zkoušky:</strong> TSP (Test studijních předpokladů) + Digitální portfolio (15–20 děl) + povinný úkol (např. téma "UNIKLÉ").</p>
+        </div>
+
+        <div class="stats-box">
+            <strong>Statistika (2024):</strong> Přesná šance na přijetí 34,77 %.
+        </div>
+        <a href="#" class="back-link">↑ Zpět na rozcestník</a>
+    </article>
+
+    <article id="pedf-upol" class="school-card">
+        <div class="school-header">
+            <div>
+                <h3>PedF UPOL – Univerzita Palackého Olomouc</h3>
+            </div>
+            <span class="meta-tag tag-ped">Učitelství</span>
+        </div>
+
+        <div class="quick-facts">
+            <div class="fact-item"><strong>Přihláška</strong>Do 15. 3. 2026</div>
+            <div class="fact-item"><strong>Zkoušky</strong>Květen</div>
+        </div>
+
+        <div class="content-block">
+            <p><strong>Zkoušky:</strong> SCIO test (OSP) + Talentová zkouška (kresba/malba na místě).<br>
+            <strong>Portfolio:</strong> Fyzické (15–20 ks) u zkoušky.</p>
+        </div>
+
+        <div class="stats-box">
+            <strong>Statistika:</strong> Jedna z nejpřísnějších statistik (cca 30 %).
+        </div>
+        <a href="#" class="back-link">↑ Zpět na rozcestník</a>
+    </article>
+
+    <article id="pedf-ou" class="school-card">
+        <div class="school-header">
+            <div>
+                <h3>PedF OU – Ostravská univerzita</h3>
+            </div>
+            <span class="meta-tag tag-ped">Učitelství</span>
+        </div>
+        <div class="quick-facts">
+            <div class="fact-item"><strong>Přihláška</strong>1. 5. – 15. 8.</div>
+        </div>
+        <div class="content-block">
+            <p>Navazující magisterské studium. Portfolio min. 20 prací. Uplatnitelnost cca 90 %.</p>
+        </div>
+        <a href="#" class="back-link">↑ Zpět na rozcestník</a>
+    </article>
+
+    <article id="ff-fakulty" class="school-card">
+        <div class="school-header">
+            <div>
+                <h3>Filozofické fakulty (Teorie umění)</h3>
+            </div>
+            <span class="meta-tag tag-uni">Teorie</span>
+        </div>
+        <div class="content-block">
+            <p><strong>FF UK / FF JU / FF MU</strong><br>
+            Obory: Dějiny umění, Estetika. Přihláška do <strong>28. 2. 2026</strong>. Bez portfolia. Zkoušky z kulturního přehledu a filozofie (Kant, Heidegger, Gadamer).</p>
+        </div>
+        <a href="#" class="back-link">↑ Zpět na rozcestník</a>
+    </article>
+
+
+    <h2>6. Fotografie (Dálkové studium)</h2>
+
+    <article id="itf" class="school-card">
+        <div class="school-header">
+            <div>
+                <h3>ITF – Institut tvůrčí fotografie Opava</h3>
+                <a href="https://www.itf.cz" target="_blank" class="web-link">🔗 Web ITF</a>
+            </div>
+            <span class="meta-tag tag-uni">Světový unikát</span>
+        </div>
+
+        <div class="quick-facts">
+            <div class="fact-item"><strong>Přihláška</strong>Do 31. 3. 2026</div>
+            <div class="fact-item"><strong>Poplatek</strong>500 Kč</div>
+            <div class="fact-item"><strong>Studium</strong>Kombinované (dálkové)</div>
+        </div>
+
+        <div class="content-block">
+            <h4>Portfolio (Specifické!)</h4>
+            <p><span class="warning">Fyzické zaslání poštou!</span> (Žádné digitální nahrávání v 1. kole).<br>
+            <strong>Obsah:</strong> Výstavní soubor (15 foto) + Ilustrace literárního díla (3–5 foto) + Stylizovaný autoportrét.</p>
+        </div>
+
+        <div class="content-block">
+            <h4>Konzultace</h4>
+            <p>Probíhají prezenčně v lednu (Opava, Katowice, Praha).</p>
+        </div>
+
+        <div class="stats-box">
+            <strong>Statistika:</strong> 40–50 % (stovky uchazečů).
+        </div>
+        <a href="#" class="back-link">↑ Zpět na rozcestník</a>
+    </article>
+
+
+    <h2>7. Soukromé školy (Placené)</h2>
+
+    <article id="soukrome" class="school-card">
+        <div class="school-header">
+            <div>
+                <h3>Soukromé školy (Vysoká šance na přijetí)</h3>
+            </div>
+            <span class="meta-tag tag-private">Placené</span>
+        </div>
+
+        <div style="margin-top: 20px; border-bottom: 1px solid #eee; padding-bottom: 20px;">
+            <h4 id="vskk">VŠKK (Praha)</h4>
+            <p><strong>Přihláška:</strong> Celoročně (Termíny pohovorů 2026: 6.2., 6.3., 17.4., 15.5.).<br>
+            <strong>Školné:</strong> Cca 60–80 tis. Kč/rok.<br>
+            <strong>Zkouška:</strong> Motivační pohovor nad portfoliem (10–15 ukázek).<br>
+            <strong>Statistika:</strong> Úspěšnost cca 70 %.</p>
+        </div>
+
+        <div style="margin-top: 20px; border-bottom: 1px solid #eee; padding-bottom: 20px;">
+            <h4 id="scholastika">Scholastika (VOŠ)</h4>
+            <p><strong>Přihláška:</strong> Do 31. 5. 2026.<br>
+            <strong>Konzultace:</strong> ANO, "Open Call" konzultace. Komunitní atmosféra.<br>
+            <strong>Statistika:</strong> Úspěšnost > 60 %.</p>
+        </div>
+
+        <div style="margin-top: 20px; border-bottom: 1px solid #eee; padding-bottom: 20px;">
+            <h4 id="adi">ADI – ART & DESIGN INSTITUT</h4>
+            <p><strong>Přihláška:</strong> 12. 3. 2026 (1. termín), 31. 8. 2026 (2. termín).<br>
+            <strong>Školné:</strong> 54 000 Kč/semestr.<br>
+            <strong>Specifikum:</strong> Předmět "Obchod s uměním".<br>
+            <strong>Statistika:</strong> Úspěšnost 84 %.</p>
+        </div>
+
+        <div style="margin-top: 20px; border-bottom: 1px solid #eee; padding-bottom: 20px;">
+            <h4 id="pcu">Prague City University (PCU)</h4>
+            <p><strong>Výuka:</strong> V angličtině (Britská akreditace).<br>
+            <strong>Školné:</strong> 90–120 tis. Kč/rok.<br>
+            <strong>Statistika:</strong> Acceptance Rate 80–89 %.</p>
+        </div>
+
+        <div style="margin-top: 20px;">
+            <h4 id="archip">ARCHIP (Architektura)</h4>
+            <p><strong>Přihláška:</strong> 31. 1. / 31. 5. 2026.<br>
+            <strong>Školné:</strong> 45 000 Kč/semestr.<br>
+            <strong>Statistika:</strong> Úspěšnost 65 %.</p>
+        </div>
+        <a href="#" class="back-link">↑ Zpět na rozcestník</a>
+    </article>
+
+    <footer>
+        <p>© 2026 Průvodce VŠ | Vygenerováno pro InDesign Publish Online</p>
+    </footer>
+
+</div>
+
+</body>
+</html>
