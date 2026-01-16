@@ -107,14 +107,17 @@
             padding-bottom: 10px;
         }
 
-        .nav-group { margin-bottom: 20px; }
+        .nav-group { margin-bottom: 25px; }
         .nav-group-title {
             font-weight: bold;
-            font-size: 0.9rem;
-            color: #666;
-            margin-bottom: 8px;
+            font-size: 0.95rem;
+            color: #444;
+            margin-bottom: 10px;
             display: block;
             text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-left: 3px solid #ddd;
+            padding-left: 8px;
         }
 
         .button-grid {
@@ -304,29 +307,143 @@
             </div>
         </div>
 
-        <!-- 2. ROZCESTNÍK ZAMĚŘENÍ -->
+        <!-- 2. ROZCESTNÍK ZAMĚŘENÍ - ROZŠÍŘENO -->
         <div class="nav-section section-field">
             <span class="nav-header">2. Podle zaměření oboru</span>
-            <div class="button-grid">
-                <a href="#umprum" class="nav-btn">Grafický design</a>
-                <a href="#famu" class="nav-btn">Animace & Film</a>
-                <a href="#favu" class="nav-btn">Game Design</a>
-                <a href="#avu" class="nav-btn">Volné umění</a>
-                <a href="#fua" class="nav-btn">Architektura</a>
-                <a href="#ft-tul" class="nav-btn">Móda a Textil</a>
-                <a href="#itf" class="nav-btn">Fotografie</a>
-                <a href="#upce-res" class="nav-btn">Restaurování</a>
+            
+            <div class="nav-group">
+                <span class="nav-group-title">Grafický design a Vizuální komunikace</span>
+                <div class="button-grid">
+                    <a href="#umprum" class="nav-btn">UMPRUM</a>
+                    <a href="#favu" class="nav-btn">FaVU VUT</a>
+                    <a href="#fdu" class="nav-btn">Sutnarka</a>
+                    <a href="#fud" class="nav-btn">FUD UJEP</a>
+                    <a href="#fmk" class="nav-btn">FMK UTB</a>
+                    <a href="#uhk" class="nav-btn">UHK</a>
+                    <a href="#soukrome" class="nav-btn">Soukromé (VŠKK, Scholastika...)</a>
+                </div>
+            </div>
+
+            <div class="nav-group">
+                <span class="nav-group-title">Animace, Film a Herní design (Game Art)</span>
+                <div class="button-grid">
+                    <a href="#famu" class="nav-btn">FAMU</a>
+                    <a href="#umprum" class="nav-btn">UMPRUM</a>
+                    <a href="#fmk" class="nav-btn">FMK UTB</a>
+                    <a href="#fdu" class="nav-btn">Sutnarka</a>
+                    <a href="#favu" class="nav-btn">FaVU (Game)</a>
+                    <a href="#jamu" class="nav-btn">JAMU (Audiovize)</a>
+                </div>
+            </div>
+
+            <div class="nav-group">
+                <span class="nav-group-title">Volné umění (Malba, Socha, Intermédia)</span>
+                <div class="button-grid">
+                    <a href="#avu" class="nav-btn">AVU</a>
+                    <a href="#umprum" class="nav-btn">UMPRUM</a>
+                    <a href="#favu" class="nav-btn">FaVU</a>
+                    <a href="#fud" class="nav-btn">FUD UJEP</a>
+                    <a href="#fu-ou" class="nav-btn">FU OU Ostrava</a>
+                    <a href="#fua" class="nav-btn">FUA TUL (Veř. prostor)</a>
+                </div>
+            </div>
+
+            <div class="nav-group">
+                <span class="nav-group-title">Architektura a Prostorová tvorba</span>
+                <div class="button-grid">
+                    <a href="#avu" class="nav-btn">AVU Architektura</a>
+                    <a href="#umprum" class="nav-btn">UMPRUM</a>
+                    <a href="#fa-cvut" class="nav-btn">FA ČVUT</a>
+                    <a href="#fa-vut" class="nav-btn">FA VUT</a>
+                    <a href="#fua" class="nav-btn">FUA TUL</a>
+                    <a href="#archip" class="nav-btn">ARCHIP</a>
+                </div>
+            </div>
+
+            <div class="nav-group">
+                <span class="nav-group-title">Design (Produkt, Móda, Materiál, Interiér)</span>
+                <div class="button-grid">
+                    <a href="#umprum" class="nav-btn">UMPRUM</a>
+                    <a href="#fdu" class="nav-btn">Sutnarka</a>
+                    <a href="#fmk" class="nav-btn">FMK UTB</a>
+                    <a href="#fud" class="nav-btn">FUD UJEP</a>
+                    <a href="#ft-tul" class="nav-btn">FT TUL (Textil/Sklo)</a>
+                    <a href="#mendelu" class="nav-btn">MENDELU (Nábytek)</a>
+                </div>
+            </div>
+
+            <div class="nav-group">
+                <span class="nav-group-title">Fotografie</span>
+                <div class="button-grid">
+                    <a href="#itf" class="nav-btn">ITF Opava</a>
+                    <a href="#famu" class="nav-btn">FAMU</a>
+                    <a href="#umprum" class="nav-btn">UMPRUM</a>
+                    <a href="#fmk" class="nav-btn">FMK UTB</a>
+                    <a href="#fdu" class="nav-btn">Sutnarka</a>
+                    <a href="#fud" class="nav-btn">FUD UJEP</a>
+                </div>
+            </div>
+
+            <div class="nav-group">
+                <span class="nav-group-title">Restaurování</span>
+                <div class="button-grid">
+                    <a href="#avu" class="nav-btn">AVU</a>
+                    <a href="#upce-res" class="nav-btn">UPCE Litomyšl</a>
+                    <a href="#vscht" class="nav-btn">VŠCHT</a>
+                </div>
             </div>
         </div>
 
-        <!-- 3. ROZCESTNÍK OBTÍŽNOST -->
+        <!-- 3. ROZCESTNÍK OBTÍŽNOST - ROZŠÍŘENO -->
         <div class="nav-section section-diff">
             <span class="nav-header">3. Podle obtížnosti přijetí</span>
-            <div class="button-grid">
-                <a href="#umprum" class="nav-btn">Extrémní (<15%)</a>
-                <a href="#fmk" class="nav-btn">Vysoká (15-30%)</a>
-                <a href="#fud" class="nav-btn">Střední (30-50%)</a>
-                <a href="#soukrome" class="nav-btn">Vysoká šance (>60%)</a>
+            
+            <div class="nav-group">
+                <span class="nav-group-title">Extrémní výběrovost (Šance pod 15 %)</span>
+                <div class="button-grid">
+                    <a href="#umprum" class="nav-btn">UMPRUM</a>
+                    <a href="#avu" class="nav-btn">AVU</a>
+                    <a href="#famu" class="nav-btn">FAMU</a>
+                    <a href="#favu" class="nav-btn">FaVU VUT</a>
+                    <a href="#jamu" class="nav-btn">JAMU</a>
+                </div>
+            </div>
+
+            <div class="nav-group">
+                <span class="nav-group-title">Vysoká náročnost (Šance 15–30 %)</span>
+                <div class="button-grid">
+                    <a href="#fmk" class="nav-btn">FMK UTB</a>
+                    <a href="#uhk" class="nav-btn">UHK</a>
+                    <a href="#pedf-uk" class="nav-btn">PedF UK</a>
+                    <a href="#upce-res" class="nav-btn">UPCE Restaurování</a>
+                    <a href="#fdu" class="nav-btn">Sutnarka</a>
+                    <a href="#pedf-upol" class="nav-btn">PedF UPOL</a>
+                </div>
+            </div>
+
+            <div class="nav-group">
+                <span class="nav-group-title">Střední náročnost (Šance 30–50 %)</span>
+                <div class="button-grid">
+                    <a href="#fa-vut" class="nav-btn">FA VUT</a>
+                    <a href="#fua" class="nav-btn">FUA TUL</a>
+                    <a href="#pedf-mu" class="nav-btn">PedF MU</a>
+                    <a href="#mendelu" class="nav-btn">MENDELU</a>
+                    <a href="#fu-ou" class="nav-btn">FU OU</a>
+                    <a href="#fud" class="nav-btn">FUD UJEP</a>
+                    <a href="#fa-cvut" class="nav-btn">FA ČVUT</a>
+                    <a href="#itf" class="nav-btn">ITF Opava</a>
+                    <a href="#vscht" class="nav-btn">VŠCHT</a>
+                    <a href="#ft-tul" class="nav-btn">FT TUL</a>
+                </div>
+            </div>
+
+            <div class="nav-group">
+                <span class="nav-group-title">Vysoká šance (Nad 60 % / Bez talentovek)</span>
+                <div class="button-grid">
+                    <a href="#soukrome" class="nav-btn">Soukromé školy (VŠKK, ADI...)</a>
+                    <a href="#vspj" class="nav-btn">VŠPJ Jihlava</a>
+                    <a href="#upce-poly" class="nav-btn">UPCE Polygrafie</a>
+                </div>
             </div>
         </div>
         
