@@ -223,6 +223,17 @@
             margin-left: 15px;
             font-weight: normal;
         }
+        .field-link {
+    color: #333; /* Barva textu (černá/šedá), aby to nerušilo */
+    text-decoration: none; /* Bez podtržení ve výchozím stavu */
+    border-bottom: 1px dotted #999; /* Jemné podtržení tečkami */
+    transition: color 0.2s, border-bottom 0.2s;
+}
+
+.field-link:hover {
+    color: var(--accent); /* Po najetí zčervená */
+    border-bottom: 1px solid var(--accent);
+}
 
         .back-link {
             display: block;
@@ -575,7 +586,7 @@
         <h1>Sjednocený kompletní přehled VŠ<br>s tvůrčími obory</h1>
         <p>Detailní průvodce pro uchazeče (Aktualizace pro rok 2026)</p>
     <div class="dropdown">
-            <button class="dropbtn">Externí odkazy ▼</button>
+            <button class="dropbtn">Externí odkazy na další vyhledavače ▼</button>
             <div class="dropdown-content">
                 <a href="https://www.vysokeskoly.cz/prehled-skol" target="_blank">Vysokeskoly.cz</a>
                 <a href="https://gaudeamus.cz/praha/studenti" target="_blank">Gaudeamus.cz</a>
@@ -828,10 +839,20 @@
         </div>
 
         <div class="content-block">
-            <h4>Obory a Ateliéry</h4>
-            <p>Malířství (I–IV), Sochařství (I–II), Kresba, Grafika (I–II), Intermédia (I–II), Nová média (I–II).<br>
-            <strong>Specifické:</strong> Škola architektury, Restaurování malířských děl, Restaurování sochařských děl.</p>
-        </div>
+    <h4>Obory a Ateliéry</h4>
+    <p>
+        <a href="https://avu.cz/oddeleni/malba-1" target="_blank" class="field-link">Malířství (I–IV)</a>, 
+        <a href="https://avu.cz/oddeleni/socha-1" target="_blank" class="field-link">Sochařství (I–II)</a>, 
+        <a href="https://avu.cz/oddeleni/kresba" target="_blank" class="field-link">Kresba</a>, 
+        <a href="https://avu.cz/oddeleni/grafika-1" target="_blank" class="field-link">Grafika (I–II)</a>, 
+        <a href="https://avu.cz/oddeleni/intermedia-1" target="_blank" class="field-link">Intermédia (I–II)</a>, 
+        <a href="https://avu.cz/oddeleni/nova-media-1" target="_blank" class="field-link">Nová média (I–II)</a>.<br>
+        <strong>Specifické:</strong> 
+        <a href="https://avu.cz/oddeleni/architektura" target="_blank" class="field-link">Škola architektury</a>, 
+        <a href="https://avu.cz/oddeleni/restaurovani-malby-a-polychromovane-plastiky" target="_blank" class="field-link">Restaurování malby</a>, 
+        <a href="https://avu.cz/oddeleni/restaurovani-sochy" target="_blank" class="field-link">Restaurování sochy</a>.
+    </p>
+</div>
 
         <div class="content-block">
             <h4>Požadavky na Portfolio</h4>
@@ -875,9 +896,15 @@
         </div>
 
         <div class="content-block">
-            <h4>Obory</h4>
-            <p>Architektura (A1–A4), Design (Průmyslový, Nábytek, Produkt), Užité umění (Sklo, Keramika, K.O.V., Móda, Textil), Grafika (Design, Písmo, Ilustrace, Film, Foto), Teorie umění.</p>
-        </div>
+    <h4>Obory</h4>
+    <p>
+        <a href="https://www.umprum.cz/cs/web/katedry/architektura" target="_blank" class="field-link">Architektura (A1–A4)</a>, 
+        <a href="https://www.umprum.cz/cs/web/katedry/design" target="_blank" class="field-link">Design (Průmyslový, Nábytek, Produkt)</a>, 
+        <a href="https://www.umprum.cz/cs/web/katedry/uzite-umeni" target="_blank" class="field-link">Užité umění (Sklo, Keramika, K.O.V., Móda, Textil)</a>, 
+        <a href="https://www.umprum.cz/cs/web/katedry/grafika" target="_blank" class="field-link">Grafika (Design, Písmo, Ilustrace, Film, Foto)</a>, 
+        <a href="https://www.umprum.cz/cs/web/katedry/teorie-a-dejiny-umeni" target="_blank" class="field-link">Teorie umění</a>.
+    </p>
+</div>
 
         <div class="content-block">
             <h4>Portfolio</h4>
@@ -919,12 +946,14 @@
         </div>
 
         <div class="content-block">
-            <h4>Obory a Specifická portfolia</h4>
-            <p><strong>Fotografie:</strong> Povinně 2 ucelené soubory (8–12 foto) + doprovodný soubor (do 5 ks) + maketa autorské publikace (dummy).<br>
-            <strong>Animace:</strong> 10–20 výtvarných prací, storyboard, námět a synopse.<br>
-            <strong>Herní design:</strong> Design dokument (GDD), prototyp hry (link) nebo vizuální koncepty.<br>
-            <strong>Režie:</strong> Vlastní film (do 20 min), literární práce, fotopříběh.</p>
-        </div>
+    <h4>Obory a Specifická portfolia</h4>
+    <p>
+        <strong><a href="https://www.famu.cz/cs/katedry/katedra-fotografie/pro-uchazece/" target="_blank" class="field-link">Fotografie</a>:</strong> Povinně 2 ucelené soubory + dummy.<br>
+        <strong><a href="https://www.famu.cz/cs/katedry/katedra-animovane-tvorby/pro-uchazece/" target="_blank" class="field-link">Animace</a>:</strong> 10–20 výtvarných prací, storyboard.<br>
+        <strong><a href="https://hernidesign.famu.cz/prijimaci-rizeni" target="_blank" class="field-link">Herní design</a>:</strong> Design dokument (GDD), prototyp.<br>
+        <strong><a href="https://www.famu.cz/cs/katedry/katedra-rezie/" target="_blank" class="field-link">Režie</a>:</strong> Vlastní film, literární práce.
+    </p>
+</div>
 
         <div class="content-block">
             <h4>Průběh zkoušek</h4>
@@ -955,14 +984,21 @@
         </div>
 
         <div class="content-block">
-            <h4>Obor Scénografie</h4>
-            <p><strong>Portfolio:</strong> 15–20 listů A3/A2. Kresba figury, studie prostoru. <span class="highlight">Povinný úkol:</span> Návrh scény na konkrétní zadanou hru (půdorys, řez, model).<br>
-        </div>
-         <div class="content-block">
-            <h4>Obor Audiovizuální tvorba</h4>
-            <p><strong>Portfolio:</strong> Autorské video (max 10 min) nebo scénář + seznam literatury/filmů.</p>
-            <p class="warning">Pozor: Obory jako Fyzické divadlo se neotevírají každý rok.</p>
-        </div>
+    <h4>Obor Scénografie</h4>
+    <p>
+        <strong><a href="https://df.jamu.cz/database/study/scenografie-331/" target="_blank" class="field-link">Scénografie</a>:</strong> 
+        Portfolio: 15–20 listů A3/A2. Kresba figury, studie prostoru. <span class="highlight">Povinný úkol:</span> Návrh scény na konkrétní zadanou hru (půdorys, řez, model).
+    </p>
+</div>
+<div class="content-block">
+    <h4>Další obory</h4>
+    <p>
+        <strong><a href="https://df.jamu.cz/database/study/audiovizualni-tvorba-a-divadlo-327/" target="_blank" class="field-link">Audiovizuální tvorba a divadlo</a>:</strong> 
+        Portfolio: Autorské video (max 10 min) nebo scénář + seznam literatury/filmů.<br>
+        <strong><a href="https://df.jamu.cz/database/study/divadlo-a-vychova-pro-neslysici-325/" target="_blank" class="field-link">Výchovná dramatika pro Neslyšící</a></strong> (specifický obor).
+    </p>
+    <p class="warning">Pozor: Obory jako Fyzické divadlo se neotevírají každý rok.</p>
+</div>
         
         <div class="content-block">
             <h4>Konzultace</h4>
@@ -995,9 +1031,17 @@
         </div>
 
         <div class="content-block">
-            <h4>Obory</h4>
-            <p>Volné umění (Malba, Socha, Performance, Video), Design (Grafický, Produktový), <strong>Herní média</strong> (Game Design).</p>
-        </div>
+    <h4>Obory</h4>
+    <p>
+        Volné umění (<a href="https://www.favu.vut.cz/ateliery/malirstvi-1" target="_blank" class="field-link">Malba</a>, 
+        <a href="https://www.favu.vut.cz/ateliery/socharstvi" target="_blank" class="field-link">Socha</a>, 
+        <a href="https://www.favu.vut.cz/ateliery/performance" target="_blank" class="field-link">Performance</a>, 
+        <a href="https://www.favu.vut.cz/ateliery/video" target="_blank" class="field-link">Video</a>), 
+        Design (<a href="https://www.favu.vut.cz/ateliery/graficky-design-1" target="_blank" class="field-link">Grafický</a>, 
+        <a href="https://www.favu.vut.cz/ateliery/produktovy-design" target="_blank" class="field-link">Produktový</a>), 
+        <strong><a href="https://www.favu.vut.cz/ateliery/herni-media" target="_blank" class="field-link">Herní média (Game Design)</a></strong>.
+    </p>
+</div>
 
         <div class="content-block">
             <h4>Portfolio</h4>
@@ -1037,16 +1081,16 @@
         </div>
 
         <div class="content-block">
-            <h4>Detaily dle specializací (Aktualizace pro 2026)</h4>
-            <ul>
-                <li><strong>Animovaná tvorba:</strong> Storyboardy, ukázky animací, námět. Zkouška: Animace na téma (červen).</li>
-                <li><strong>Game Design:</strong> Game Design Document (GDD), 3–5 projektů, vizuály, prototypy. Zkouška: Herní koncept, logické úkoly.</li>
-                <li><strong>Grafický design / Digitální design:</strong> Plakáty, UI/UX, typo, vizuální styl. Zkouška: Redesign loga/webu.</li>
-                <li><strong>Produktový design / Design obuvi / Oděv / Sklo:</strong> Modely, technické výkresy, skici. Zkouška: Kresba objektu, návrh.</li>
-                <li><strong>Audiovizuální tvorba:</strong> Scénáře, videa, technické rozbory (zvuk/kamera). Zkouška: Střih, zvuková kompozice.</li>
-                <li><strong>Fotografie:</strong> Dokumentární i reklamní foto. Zkouška: Fotografický úkol na místě.</li>
-            </ul>
-        </div>
+    <h4>Detaily dle specializací (Aktualizace pro 2026)</h4>
+    <ul>
+        <li><strong><a href="https://fmk.utb.cz/ateliery/animovana-tvorba/" target="_blank" class="field-link">Animovaná tvorba</a>:</strong> Storyboardy, ukázky animací.</li>
+        <li><strong><a href="https://www.utb.cz/vyhledavac-oboru/multimedia-bc/game-design-bc/?tab=2" target="_blank" class="field-link">Game Design</a>:</strong> GDD, 3–5 projektů, prototypy.</li>
+        <li><strong><a href="https://www.utb.cz/vyhledavac-oboru/multimedia-bc/digitalni-design-bc/?tab=2" target="_blank" class="field-link">Digitální design</a> / <a href="https://www.utb.cz/vyhledavac-oboru/multimedia-mgr/graficky-design-mgr/?tab=2" target="_blank" class="field-link">Grafický design</a>:</strong> UI/UX, typo, vizuál.</li>
+        <li><strong><a href="https://www.utb.cz/vyhledavac-oboru/design-bc/produktovy-design-bc/?tab=2" target="_blank" class="field-link">Produkt</a> / <a href="https://www.utb.cz/vyhledavac-oboru/design-bc/design-obuvi-bc/?tab=2" target="_blank" class="field-link">Obuv</a> / <a href="https://www.utb.cz/vyhledavac-oboru/design-bc/design-odevu-bc/?tab=2" target="_blank" class="field-link">Oděv</a> / <a href="https://www.utb.cz/vyhledavac-oboru/design-bc/sklo-bc/?tab=2" target="_blank" class="field-link">Sklo</a>:</strong> Modely, skici.</li>
+        <li><strong><a href="https://www.utb.cz/vyhledavac-oboru/teorie-a-praxe-audiovizualni-tvorby-bc/vizualni-efekty-bc/?tab=2" target="_blank" class="field-link">Vizuální efekty</a>:</strong> Filmové triky.</li>
+        <li><strong><a href="https://www.utb.cz/vyhledavac-oboru/multimedia-bc/fotografie-bc/?tab=2" target="_blank" class="field-link">Reklamní fotografie</a>:</strong> Dokumentární i reklamní.</li>
+    </ul>
+</div>
 
         <div class="content-block">
             <h4>Konzultace</h4>
@@ -1076,6 +1120,30 @@
         </div>
 
         <div class="content-block">
+    <h4>Ateliéry a Specializace</h4>
+    <p>
+        <strong>Grafický design:</strong> 
+        <a href="https://fud.ujep.cz/ateliery/graficky-design-i/" target="_blank" class="field-link">Grafický design I</a>, 
+        <a href="https://fud.ujep.cz/ateliery/graficky-design-ii/" target="_blank" class="field-link">Grafický design II</a>, 
+        <a href="https://fud.ujep.cz/ateliery/vizualni-design/" target="_blank" class="field-link">Vizuální design</a>.<br>
+        
+        <strong>Design:</strong> 
+        <a href="https://fud.ujep.cz/ateliery/produktovy-design/" target="_blank" class="field-link">Produktový design</a>, 
+        <a href="https://fud.ujep.cz/ateliery/interierovy-design/" target="_blank" class="field-link">Interiérový design</a>, 
+        <a href="https://fud.ujep.cz/ateliery/keramicky-design/" target="_blank" class="field-link">Keramický design</a>, 
+        <a href="https://fud.ujep.cz/ateliery/sklo/" target="_blank" class="field-link">Sklo</a>, 
+        <a href="https://fud.ujep.cz/ateliery/odevni-a-textilni-design/" target="_blank" class="field-link">Oděvní a textilní design</a>.<br>
+        
+        <strong>Fotografie a média:</strong> 
+        <a href="https://fud.ujep.cz/ateliery/fotografie/" target="_blank" class="field-link">Fotografie</a>, 
+        <a href="https://fud.ujep.cz/ateliery/aplikovana-a-reklamni-fotografie/" target="_blank" class="field-link">Aplikovaná a reklamní fotografie</a>, 
+        <a href="https://fud.ujep.cz/ateliery/time-based-media/" target="_blank" class="field-link">Time-Based Media</a>, 
+        <a href="https://fud.ujep.cz/ateliery/interaktivni-media/" target="_blank" class="field-link">Interaktivní média</a>.<br>
+        
+        <strong>Volné umění:</strong> 
+        <a href="https://fud.ujep.cz/ateliery/objekt-prostor-akce/" target="_blank" class="field-link">Objekt – Prostor – Akce (Performance)</a>.
+    </p>
+</div>
             <h4>Specifikum portfolia</h4>
             <p><span class="warning">FYZICKÉ ODEVZDÁNÍ!</span> Portfolio se odevzdává osobně 1. den zkoušky. Požadují se desky (nerolovat!), cca 20 prací a <strong>skicáky</strong> (velmi důležité pro hodnocení procesu).</p>
         </div>
@@ -1095,7 +1163,7 @@
         <div class="school-header">
             <div>
                 <h3>FDU ZČU – „Sutnarka“ Plzeň</h3>
-                <a href="https://fdu.zcu.cz" target="_blank" class="web-link">🔗 Web Sutnarka</a>
+                <a href="https://www.zcu.cz/cs/Admission/Study-fields/index.html?Faculty=fdu" target="_blank" class="web-link">🔗 Web Sutnarka</a>
             </div>
             <span class="meta-tag tag-uni">Plzeň</span>
         </div>
@@ -1107,9 +1175,17 @@
         </div>
 
         <div class="content-block">
-            <h4>Obory</h4>
-            <p>Ilustrace, Komiks (prestižní), Animace, Grafický design, Produkt, Šperk, Fashion design.</p>
-        </div>
+    <h4>Seznam alespoň některých oborů (celkově jich je totiž 22)</h4>
+    <p>
+        <a href="https://www.fdu.zcu.cz/cs/Backup_old/Zaloha/GraphicDesignAndIllustration.html" target="_blank" class="field-link">Ilustrace</a>, 
+        <a href="https://www.zcu.cz/cs/Admission/Study-fields/index.html?FieldNumber=B0211A310013S04&FormOfStudy=P&TypeOfStudy=B&Specialization=4" target="_blank" class="field-link">Komiks (prestižní)</a>, 
+        <a href="https://www.zcu.cz/cs/Admission/Study-fields/index.html?FieldNumber=B0211A310012S01&FormOfStudy=P&TypeOfStudy=B&Specialization=1" target="_blank" class="field-link">Animace</a>, 
+        <a href="https://www.zcu.cz/cs/Admission/Study-fields/index.html?FieldNumber=B0211A310013S03&FormOfStudy=P&TypeOfStudy=B&Specialization=3" target="_blank" class="field-link">Grafický design</a>, 
+        <a href="https://www.zcu.cz/cs/Admission/Study-fields/index.html?FieldNumber=B0212A310006S04&FormOfStudy=P&TypeOfStudy=B&Specialization=4" target="_blank" class="field-link">Produkt</a>, 
+        <a href="https://www.zcu.cz/cs/Admission/Study-fields/index.html?FieldNumber=B0211A310012S05&FormOfStudy=P&TypeOfStudy=B&Specialization=5" target="_blank" class="field-link">Multimédia</a>, 
+        <a href="https://www.zcu.cz/cs/Admission/Study-fields/index.html?FieldNumber=B0211A310012S03&FormOfStudy=P&TypeOfStudy=B&Specialization=3" target="_blank" class="field-link">Interaktivní design</a>.
+    </p>
+</div>
 
         <div class="content-block">
             <h4>Průběh zkoušek</h4>
@@ -1147,9 +1223,13 @@
         </div>
 
         <div class="content-block">
-            <h4>Portfolio</h4>
-            <p>Kresby, návrhy, prostorové studie (10–15 prací formátu A3). Nechtějí jen technické výkresy, hledají kreativní myšlení a práci s prostorem.</p>
-        </div>
+    <h4>Portfolio</h4>
+    <p>
+        Týká se programů <a href="https://fua.tul.cz/fakulta/katedry-a-pracoviste/katedra-architektury-kar" target="_blank" class="field-link">Architektura</a> a 
+        <a href="https://fua.tul.cz/fakulta/katedry-a-pracoviste/katedra-umeni-kum" target="_blank" class="field-link">Výtvarné umění (Tvorba ve veř. prostoru)</a>. 
+        Portfolio: Kresby, návrhy, prostorové studie (10–15 prací formátu A3). Nechtějí jen technické výkresy, hledají kreativní myšlení a práci s prostorem.
+    </p>
+</div>
 
         <div class="content-block">
             <h4>Konzultace</h4>
@@ -1166,7 +1246,7 @@
         <div class="school-header">
             <div>
                 <h3>FT TUL – Textilní fakulta Liberec</h3>
-                <a href="https://ft.tul.cz" target="_blank" class="web-link">🔗 Web FT TUL</a>
+                <a href="https://www.ft.tul.cz/" target="_blank" class="web-link">🔗 Web FT TUL</a>
             </div>
             <span class="meta-tag tag-tech">Textil & Nano</span>
         </div>
@@ -1178,9 +1258,14 @@
         </div>
 
         <div class="content-block">
-            <h4>Obor Návrhářství</h4>
-            <p>Textil, Oděv, Sklo, Šperk. Unikátní propojení s technologiemi (nanovlákna).</p>
-        </div>
+    <h4>Obor Návrhářství</h4>
+    <p>
+        Program <a href="https://www.tul.cz/uchazeci/studijni-programy/program/1324_navrharstvi/" target="_blank" class="field-link">Návrhářství (Bc.)</a> zahrnuje specializace: 
+        <a href="https://www.tul.cz/uchazeci/studijni-programy/program/1316_textilni-marketing/" target="_blank" class="field-link">Textilní marketing</a>, 
+        <a href="https://www.tul.cz/uchazeci/studijni-programy/program/1321_textilni-technologie-materialy-a-nanomaterialy//" target="_blank" class="field-link">Textilní technologie, materiály a nanomateriály</a>. 
+        Textil, Oděv, Sklo, Šperk. Unikátní propojení s technologiemi (nanovlákna, inteligentní textilie).
+    </p>
+</div>
 
         <div class="content-block">
             <h4>Portfolio</h4>
@@ -1202,7 +1287,7 @@
         <div class="school-header">
             <div>
                 <h3>FU OU – Fakulta umění Ostrava</h3>
-                <a href="https://fu.osu.cz" target="_blank" class="web-link">🔗 Web FU OU</a>
+                <a href="https://fu.osu.cz/studijniobory/" target="_blank" class="web-link">🔗 Web FU OU</a>
             </div>
             <span class="meta-tag tag-uni">Ostrava</span>
         </div>
@@ -1215,9 +1300,15 @@
         </div>
 
         <div class="content-block">
-            <h4>Obory</h4>
-            <p>Volné umění, Intermédia (Video, Performance), Grafický design, Hudba.</p>
-        </div>
+    <h4>Obory</h4>
+    <p>
+        Volné umění (<a href="https://fu.osu.cz/studijniobory/?specializaceid=2985" target="_blank" class="field-link">Malba</a>, 
+        <a href="https://fu.osu.cz/studijniobory/?specializaceid=3053" target="_blank" class="field-link">Sochařství - volná tvorba</a>, 
+        <a href="https://fu.osu.cz/studijniobory/?specializaceid=3481" target="_blank" class="field-link">Grafický design a vizuální komunikace</a>), 
+        <a href="https://fu.osu.cz/studijniobory/?specializaceid=3082" target="_blank" class="field-link">Knižní design a intermédia</a> (Video, Performance), 
+        Grafika a kresba (<a href="https://fu.osu.cz/studijniobory/?specializaceid=2988" target="_blank" class="field-link">Volná tvorba, otevřená média</a>).
+    </p>
+</div>
 
         <div class="content-block">
             <h4>Portfolio</h4>
@@ -1252,10 +1343,12 @@
         </div>
 
         <div class="content-block">
-            <h4>Obory</h4>
-            <p><strong>Grafická a intermediální tvorba (Bc.):</strong> Prestižní "ne-učitelský" obor.<br>
-            <strong>Textilní tvorba (Bc.):</strong> Techniky a design.</p>
-        </div>
+    <h4>Obory</h4>
+    <p>
+        <strong><a href="https://www.uhk.cz/cs/pedagogicka-fakulta/prijimaci-zkousky/studijni-programy/graficka-a-intermedialni-tvorba" target="_blank" class="field-link">Grafická a intermediální tvorba (Bc.)</a>:</strong> Prestižní "ne-učitelský" obor.<br>
+        <strong><a href="https://www.uhk.cz/cs/pedagogicka-fakulta/prijimaci-zkousky/studijni-programy/textilni-tvorba" target="_blank" class="field-link">Textilní tvorba (Bc.)</a>:</strong> Techniky a design.
+    </p>
+</div>
 
         <div class="content-block">
             <h4>Portfolio (Kritické varování!)</h4>
@@ -1285,7 +1378,7 @@
         <div class="school-header">
             <div>
                 <h3>UPCE – Fakulta restaurování Litomyšl</h3>
-                <a href="https://fr.upce.cz/" target="_blank" class="web-link">🔗 Web FR UPCE</a>
+                <a href="https://studuj.upce.cz/fakulta-restaurovani" target="_blank" class="web-link">🔗 Web FR UPCE</a>
             </div>
             <span class="meta-tag tag-uni">Litomyšl</span>
         </div>
@@ -1298,9 +1391,14 @@
         </div>
 
         <div class="content-block">
-            <h4>Obory</h4>
-            <p>Restaurování nástěnné malby, kamene, papíru, knih.</p>
-        </div>
+    <h4>Obory (Ateliéry)</h4>
+    <p>
+        <a href="https://studuj.upce.cz/obor/fr-nastenna-malba-sgrafito-mozaika-bakalarsky-prezencni-cestina" target="_blank" class="field-link">Restaurování nástěnné malby a sgrafita</a>,<br> 
+        <a href="https://studuj.upce.cz/obor/fr-umelecka-umelecko-remeslna-dila-z-kamene-stuku-sadry-terakoty-umeleho-kamene-bakalarsky" target="_blank" class="field-link">Restaurování kamene a souvisejících materiálů</a>,<br> 
+        <a href="https://studuj.upce.cz/obor/fr-papir-knizni-vazba-dokumenty-bakalarsky-prezencni-cestina" target="_blank" class="field-link">Restaurování papíru, knižní vazby a dokumentů</a>,<br>
+        <a href="https://studuj.upce.cz/obor/fr-umelecka-umelecko-remeslna-dila-na-papirovych-textilnich-pergamenovych-podlozkach" target="_blank" class="field-link">Restaurování děl na papíru a pergamenu</a>.
+    </p>
+</div>
 
         <div class="content-block">
             <h4>Portfolio</h4>
@@ -1328,7 +1426,7 @@
         <div class="school-header">
             <div>
                 <h3>UPCE – Fakulta chemicko-technologická (Polygrafie)</h3>
-                 <a href="https://fcht.upce.cz" target="_blank" class="web-link">🔗 Web FChT</a>
+                 <a href="https://studuj.upce.cz/fakulta-chemicko-technologicka#block-kraken-theme-views-block-programy-block-2" target="_blank" class="web-link">🔗 Web FChT</a>
             </div>
             <span class="meta-tag tag-tech">Pardubice</span>
         </div>
@@ -1338,8 +1436,11 @@
             <div class="fact-item"><strong>Talentovky</strong>NEJSOU</div>
         </div>
         <div class="content-block">
-            <p>Přijetí zpravidla na základě průměru ze SŠ (chemie/matika). Šance téměř 100 %.</p>
-        </div>
+    <p>
+        Obor <a href="https://studuj.upce.cz/obor/fch-moderni-tiskove-vizualizacni-technologie-bakalarsky-prezencni-cestina" target="_blank" class="field-link">Moderní tiskové a vizualizační technologie</a>. 
+        Jde o technicko-chemický obor zaměřený na tiskové technologie, barvy a materiály. Přijetí zpravidla na základě průměru ze SŠ (chemie/matika). Šance na přijetí téměř 100 %.
+    </p>
+</div>
         <a href="#" class="back-link">↑ Zpět na rozcestník</a>
     </article>
 
@@ -1359,7 +1460,14 @@
             <div class="fact-item"><strong>Přihláška</strong>Do 30. 11. 2025</div>
             <div class="fact-item"><strong>Zkoušky</strong>Leden 2026</div>
         </div>
-
+        <div class="content-block">
+    <h4>Studijní programy</h4>
+    <p>
+        <a href="https://www.fa.cvut.cz/cs/uchazeci/bc-programy/architektura-a-urbanismus" target="_blank" class="field-link">Architektura a urbanismus</a>,<br> 
+        <a href="https://www.fa.cvut.cz/cs/uchazeci/bc-programy/krajinarska-architekturaa" target="_blank" class="field-link">Krajinářská architektura</a>,<br> 
+        <a href="https://www.fa.cvut.cz/cs/uchazeci/bc-programy/design" target="_blank" class="field-link">Design (Průmyslový design)</a>.
+    </p>
+</div>
         <div class="content-block">
             <h4>Portfolio</h4>
             <p>Fyzické, předkládá se u zkoušky. <strong>Max. 15 listů A3.</strong> Školní i mimoškolní práce, skici, foto modelů.</p>
@@ -1397,10 +1505,13 @@
         </div>
 
         <div class="content-block">
-            <h4>Zkoušky a Portfolio</h4>
-            <p>Portfolio digitální PDF (10–15 prací).<br>
-            <strong>Zkoušky:</strong> SCIO testy (OSP + ZSV) + tvůrčí úkol + test prostorové představivosti + pohovor.</p>
-        </div>
+    <h4>Zkoušky a Portfolio</h4>
+    <p>
+        Studijní program <a href="https://www.vut.cz/studenti/programy/program/9714" target="_blank" class="field-link">Architektura a urbanismus</a>.<br>
+        Portfolio digitální PDF (10–15 prací).<br>
+        <strong>Zkoušky:</strong> SCIO testy (OSP + ZSV) + tvůrčí úkol + test prostorové představivosti + pohovor.
+    </p>
+</div>
         
         <div class="content-block">
             <h4>Konzultace</h4>
@@ -1417,7 +1528,7 @@
         <div class="school-header">
             <div>
                 <h3>MENDELU – Design nábytku Brno</h3>
-                <a href="https://ldf.mendelu.cz" target="_blank" class="web-link">🔗 Web LDF</a>
+                <a href="https://ldf.mendelu.cz/bakalarske-studium/" target="_blank" class="web-link">🔗 Web LDF</a>
             </div>
             <span class="meta-tag tag-tech">Design & Dřevo</span>
         </div>
@@ -1427,6 +1538,14 @@
             <div class="fact-item"><strong>Přihláška</strong>Do 15. 4. 2026</div>
             <div class="fact-item"><strong>Poplatek</strong>800 Kč</div>
         </div>
+        <div class="content-block">
+    <h4>Obor</h4>
+    <p>
+        Program <a href="https://ldf.mendelu.cz/studijni-programy/design-nabytku/?rup=aHR0cHM6Ly9sZGYubWVuZGVsdS5jei9iYWthbGFyc2tlLXN0dWRpdW0vP3Bzbj0zMTIyLjM5OTkwMjM0Mzc1JnQ9YmFjaGVsb3I%3D" target="_blank" class="field-link">Design nábytku</a> 
+        nebo <a href="https://ldf.mendelu.cz/studijni-programy/tvorba-a-vyroba-nabytku-2/?rup=aHR0cHM6Ly9sZGYubWVuZGVsdS5jei9iYWthbGFyc2tlLXN0dWRpdW0vP3Bzbj03MjIyLjM5OTkwMjM0Mzc1JnQ9YmFjaGVsb3I%3D" target="_blank" class="field-link">Tvorba a výroba nábytku</a>. 
+        Kombinace techniky a designu dřeva.
+    </p>
+</div>
 
         <div class="content-block">
             <h4>Portfolio (Nepovinné)</h4>
@@ -1453,7 +1572,7 @@
         <div class="school-header">
             <div>
                 <h3>VŠPJ – Polygrafie Jihlava</h3>
-                 <a href="https://www.vspj.cz" target="_blank" class="web-link">🔗 Web VŠPJ</a>
+                 <a href="https://www.vspj.cz/cs/zajemce-o-studium/e-prihlaska" target="_blank" class="web-link">🔗 Web VŠPJ</a>
             </div>
             <span class="meta-tag tag-tech">Jihlava</span>
         </div>
@@ -1463,8 +1582,11 @@
             <div class="fact-item"><strong>Talentovky</strong>NEJSOU</div>
         </div>
         <div class="content-block">
-            <p>Technický obor (Aplikovaná technika, Cestovní ruch). Konzultace portfolia <strong>NEJSOU</strong> (nejde o uměleckou školu). Šance > 70 %.</p>
-        </div>
+    <p>
+        Obor <a href="https://www.vspj.cz/cs/zajemce-o-studium/e-prihlaska?oborwid=2" target="_blank" class="field-link">Aplikovaná technika pro průmyslovou praxi</a> (specializace na design a materiály). 
+        Konzultace portfolia <strong>NEJSOU</strong> (nejde o uměleckou školu). Šance > 70 %.
+    </p>
+</div>
         <a href="#" class="back-link">↑ Zpět na rozcestník</a>
     </article>
 
@@ -1483,11 +1605,13 @@
         </div>
 
         <div class="content-block">
-            <h4>Zkoušky a Studium</h4>
-            <p><strong>Portfolio:</strong> Není vyžadováno předem (přinést ukázky k pohovoru).<br>
+    <h4>Zkoušky a Studium</h4>
+    <p>
+        Studijní program <a href="https://studuj.vscht.cz/studijni-programy/program/B104/" target="_blank" class="field-link">Konzervování-restaurování objektů kulturního dědictví</a>.<br>
+        <strong>Portfolio:</strong> Není vyžadováno předem (přinést ukázky k pohovoru).<br>
             <strong>Zkouška:</strong> Talentová (kresba) + Chemie + Biologie.<br>
             <span class="warning">Varování:</span> Jde o vědecký přístup (konzervátorská věda). Náročná chemie v prních letech je častým důvodem ukončení studia.</p>
-        </div>
+</div>
         
         <div class="content-block">
             <h4>Konzultace</h4>
@@ -1519,7 +1643,7 @@
 
         <div class="content-block">
             <h4>Portfolio a Zkoušky</h4>
-            <p>Digitální PDF (15–20 prací) nahrávané předem.<br>
+            <p>Obor <a href="https://is.cuni.cz/studium/prijimacky/index.php?do=detail_obor&id_obor=34665" target="_blank" class="field-link">Výtvarná výchova se zaměřením na vzdělávání</a> (často dvouoborové).<br>Digitální PDF (15–20 prací) nahrávané předem.<br>
             <strong>Zkouška:</strong> Oborový test (dějiny umění) + kresebná studie dle reality.<br>
             <strong>Konzultace:</strong> <strong>ANO.</strong> Katedra pořádá placené přípravné kurzy (CŽV).</p>
         </div>
@@ -1545,7 +1669,8 @@
         </div>
 
         <div class="content-block">
-            <p><strong>Zkoušky:</strong> TSP (Test studijních předpokladů) + Digitální portfolio (15–20 děl) + povinný úkol (např. téma "UNIKLÉ").<br>
+            <p>Obor <a href="https://www.ped.muni.cz/pro-uchazece/bakalarske-studium-a-magisterske-studium/23951-vytvarna-vychova-a-vizualni-tvorba-se-zamerenim-na-vzdelavani" target="_blank" class="field-link">Výtvarná výchova a vizuální tvorba se zaměřením na vzdělávání</a> 
+        <strong>Zkoušky:</strong> TSP (Test studijních předpokladů) + Digitální portfolio (15–20 děl) + povinný úkol (např. téma "UNIKLÉ").<br>
             <strong>Konzultace:</strong> <strong>ANO.</strong> Akce Brno Art Week, workshopy.</p>
         </div>
 
@@ -1571,7 +1696,7 @@
         </div>
 
         <div class="content-block">
-            <p><strong>Zkoušky:</strong> SCIO test (OSP) + Talentová zkouška (kresba/malba na místě).<br>
+            <p>Obor <a href="https://studium.upol.cz/Catalog/StudyPrograms?type=Bachelor#year=2026&globalId=59084&maior=5340" target="_blank" class="field-link">Výtvarná tvorba se zaměřením na vzdělávání</a>.<br><strong>Zkoušky:</strong> SCIO test (OSP) + Talentová zkouška (kresba/malba na místě).<br>
             <strong>Portfolio:</strong> Fyzické (15–20 ks) u zkoušky.<br>
             <strong>Konzultace:</strong> <strong>ANO.</strong> Výtvarné dílny, DOD.</p>
         </div>
@@ -1595,7 +1720,8 @@
             <div class="fact-item"><strong>Přihláška</strong>1. 5. – 15. 8.</div>
         </div>
         <div class="content-block">
-            <p>Navazující magisterské studium. Portfolio min. 20 prací. Uplatnitelnost cca 90 %.<br>
+            <p><a href="https://pdf.osu.cz/kvv/" target="_blank" class="field-link">Katedra výtvarné výchovy</a>.<br>Navazující magisterské studium (Učitelství pro SŠ/ZUŠ). Portfolio min. 20 prací. Uplatnitelnost cca 90 %.<br>
+                <p><a href="https://pdf.osu.cz/studijniobory/?specializaceid=3845" target="_blank" class="field-link">Pedagogická fakulta</a>.<br>Prezentace a edukace v kultuře.<br>
             <strong>Konzultace:</strong> <strong>ANO.</strong></p>
         </div>
         <a href="#" class="back-link">↑ Zpět na rozcestník</a>
@@ -1609,9 +1735,23 @@
             <span class="meta-tag tag-uni">Teorie</span>
         </div>
         <div class="content-block">
-            <p><strong>FF UK / FF JU / FF MU</strong><br>
-            Obory: Dějiny umění, Estetika. Přihláška do <strong>28. 2. 2026</strong>. Bez portfolia. Zkoušky z kulturního přehledu a filozofie (Kant, Heidegger, Gadamer).</p>
-        </div>
+    <h4>Univerzita Karlova (FF UK)</h4>
+    <p>
+        <a href="https://is.cuni.cz/studium/prijimacky/index.php?do=detail_obor&id_obor=35037/" target="_blank" class="field-link">Dějiny umění</a>
+        <a href="https://is.cuni.cz/studium/prijimacky/index.php?do=detail_obor&id_obor=35039" target="_blank" class="field-link">Estetika</a> 
+        <a href="https://is.cuni.cz/studium/prijimacky/index.php?do=detail_obor&id_obor=35041" target="_blank" class="field-link">Filmová studia</a> (KFS).<br>
+        <strong>Zkoušky:</strong> Oborové testy, kulturní přehled, u filmu analýza díla.
+    </p>
+
+    <h4 style="margin-top: 15px;">Masarykova univerzita (FF MU)</h4>
+    <p>
+        <a href="https://www.muni.cz/bakalarske-a-magisterske-obory/24655-dejiny-umeni?_gl=1*1fgca3c*_up*MQ..*_gs*MQ..&gclid=Cj0KCQiAm9fLBhCQARIsAJoNOcsOfoXxTfK-NvgMCWrHIXpBohB71q6K-6OoFLmm_YMhlBwaXr9hK90aAo7NEALw_wcB&gbraid=0AAAAACjSXoCIa2gxGim1Ayo8M3ZzobdSf" target="_blank" class="field-link">Dějiny umění</a>, 
+        <a href="https://www.muni.cz/bakalarske-a-magisterske-obory/24545-estetika?_gl=1*1vidmj7*_up*MQ..*_gs*MQ..&gclid=Cj0KCQiAm9fLBhCQARIsAJoNOcsOfoXxTfK-NvgMCWrHIXpBohB71q6K-6OoFLmm_YMhlBwaXr9hK90aAo7NEALw_wcB&gbraid=0AAAAACjSXoCIa2gxGim1Ayo8M3ZzobdSf" target="_blank" class="field-link">Estetika</a>, 
+        <a href="https://www.muni.cz/bakalarske-a-magisterske-obory/24374-teorie-a-dejiny-filmu-a-audiovizualni-kultury?_gl=1*1vidmj7*_up*MQ..*_gs*MQ..&gclid=Cj0KCQiAm9fLBhCQARIsAJoNOcsOfoXxTfK-NvgMCWrHIXpBohB71q6K-6OoFLmm_YMhlBwaXr9hK90aAo7NEALw_wcB&gbraid=0AAAAACjSXoCIa2gxGim1Ayo8M3ZzobdSf" target="_blank" class="field-link">Teorie a dějiny filmu a audiovizuální kultury</a>.<br>
+Přihláška do <strong>28. 2. 2026</strong>. Bez portfolia. Zkoušky z kulturního přehledu a filozofie (Kant, Heidegger, Gadamer).
+        <strong>Zkoušky:</strong> TSP (Test studijních předpokladů) + často oborový test (ZSV/Dějiny).
+    </p>
+</div>
         <a href="#" class="back-link">↑ Zpět na rozcestník</a>
     </article>
 
@@ -1622,7 +1762,7 @@
         <div class="school-header">
             <div>
                 <h3>ITF – Institut tvůrčí fotografie Opava</h3>
-                <a href="https://www.itf.cz" target="_blank" class="web-link">🔗 Web ITF</a>
+                <a href="https://www.slu.cz/fpf/cz/itfkontakt" target="_blank" class="web-link">🔗 Web ITF</a>
             </div>
             <span class="meta-tag tag-uni">Světový unikát</span>
         </div>
@@ -1636,8 +1776,8 @@
 
         <div class="content-block">
             <h4>Portfolio (Specifické!)</h4>
-            <p><span class="warning">Fyzické zaslání poštou!</span> (Žádné digitální nahrávání v 1. kole).<br>
-            <strong>Obsah:</strong> Výstavní soubor (15 foto) + Ilustrace literárního díla (3–5 foto) + Stylizovaný autoportrét.</p>
+            <p>Obor <a href="https://www.slu.cz/fpf/cz/obory" target="_blank" class="field-link">Audiovizuální tvorba, Tvůrčí fotografie</a>.<br><span class="warning">Fyzické zaslání poštou!</span> (Žádné digitální nahrávání v 1. kole).<br>
+            <strong>Obsah:</strong> Výstavní soubor (15 fotografií) + Ilustrace literárního díla (3–5 foto) + Stylizovaný autoportrét.</p>
         </div>
 
         <div class="content-block">
@@ -1664,8 +1804,10 @@
 
         <div style="margin-top: 20px; border-bottom: 1px solid #eee; padding-bottom: 20px;">
             <h4 id="vskk">VŠKK (Praha)</h4>
-            <a href="https://www.vskk.cz" target="_blank" class="web-link">🔗 Web VŠKK</a>
-            <p><strong>Přihláška:</strong> Celoročně (Termíny pohovorů 2026: 6.2., 6.3., 17.4., 15.5.).<br>
+            <a href="https://www.vskk.cz/cz/program/" target="_blank" class="web-link">🔗 Web VŠKK</a>
+            <p>Obory: <a href="https://www.vskk.cz/cz/program/design-motion-copy/graficky-a-medialni-design/" target="_blank" class="field-link">Grafický a mediální design</a>, 
+        <a href="https://www.vskk.cz/cz/program/design-motion-copy/video-foto-produkce/" target="_blank" class="field-link">Video-foto produkce</a>, 
+        <a href="https://www.vskk.cz/cz/program/design-motion-copy/animace-a-vizualni-efekty/" target="_blank" class="field-link">Animace a vizuální efekty</a>.<br><strong>Přihláška:</strong> Celoročně (Termíny pohovorů 2026: 6.2., 6.3., 17.4., 15.5.).<br>
             <strong>Školné:</strong> Cca 42 000 – 78 400 Kč/semestr.<br>
             <strong>Zkouška:</strong> Motivační pohovor nad portfoliem (10–15 ukázek).<br>
             <strong>Konzultace:</strong> ANO, na DOD.<br>
@@ -1675,7 +1817,10 @@
         <div style="margin-top: 20px; border-bottom: 1px solid #eee; padding-bottom: 20px;">
             <h4 id="scholastika">Scholastika (VOŠ)</h4>
             <a href="https://scholastika.cz" target="_blank" class="web-link">🔗 Web Scholastika</a>
-            <p><strong>Přihláška:</strong> Do 31. 5. 2026.<br>
+            <p>Obory: <a href="https://scholastika.cz/cz/vos/graficky-design" target="_blank" class="field-link">Grafický design</a>
+            <a href="https://scholastika.cz/cz/vos/game-design" target="_blank" class="field-link">Game design</a>
+
+            <strong>Přihláška:</strong> Do 31. 5. 2026.<br>
             <strong>Konzultace:</strong> ANO, "Open Call" konzultace. Komunitní atmosféra.<br>
             <strong>Statistika:</strong> Úspěšnost > 60 %.</p>
         </div>
@@ -1683,7 +1828,7 @@
         <div style="margin-top: 20px; border-bottom: 1px solid #eee; padding-bottom: 20px;">
             <h4 id="adi">ADI – ART & DESIGN INSTITUT</h4>
              <a href="https://www.adi.cz" target="_blank" class="web-link">🔗 Web ADI</a>
-            <p><strong>Přihláška:</strong> 12. 3. 2026 (1. termín), 31. 8. 2026 (2. termín).<br>
+            <p>Unikátní propojení: <a href="https://www.adi.cz/studium/ateliery-a-predmety" target="_blank" class="field-link">Fotografie, Grafika/Kresba, Intermediální ateliér, Grafický design, Malba, Design prostoru/interiéru</a>.<br><strong>Přihláška:</strong> 12. 3. 2026 (1. termín), 31. 8. 2026 (2. termín).<br>
             <strong>Školné:</strong> 54 000 Kč/semestr.<br>
             <strong>Specifikum:</strong> Předmět "Obchod s uměním".<br>
             <strong>Konzultace:</strong> ANO, individuální před přijímačkami.<br>
@@ -1693,7 +1838,7 @@
         <div style="margin-top: 20px; border-bottom: 1px solid #eee; padding-bottom: 20px;">
             <h4 id="pcu">Prague City University (PCU)</h4>
              <a href="https://www.praguecityuniversity.cz" target="_blank" class="web-link">🔗 Web PCU</a>
-            <p><strong>Výuka:</strong> V angličtině (Britská akreditace).<br>
+            <p>Obory <a href="https://gaudeamus.cz/fakulty/detail-fakulty/facultyHash:197baa1ffaf964d3a548f9d1edbef9be" target="_blank" class="field-link">Art & Design</a> (Graphic Design, Fine Art).<br><strong>Výuka:</strong> V angličtině (Britská akreditace).<br>
             <strong>Školné:</strong> 90–120 tis. Kč/rok.<br>
             <strong>Konzultace:</strong> ANO, "Portfolio review".<br>
             <strong>Statistika:</strong> Acceptance Rate 80–89 %.</p>
@@ -1702,7 +1847,7 @@
         <div style="margin-top: 20px;">
             <h4 id="archip">ARCHIP (Architektura)</h4>
              <a href="https://www.archip.eu" target="_blank" class="web-link">🔗 Web ARCHIP</a>
-            <p><strong>Přihláška:</strong> 31. 1. / 31. 5. 2026.<br>
+            <p>Obor <a href="https://www.archip.eu/bachelor-programme" target="_blank" class="field-link">Architectural Design</a>.<br><strong>Přihláška:</strong> 31. 1. / 31. 5. 2026.<br>
             <strong>Školné:</strong> 45 000 Kč/semestr.<br>
             <strong>Konzultace:</strong> ANO, online i osobně.<br>
             <strong>Statistika:</strong> Úspěšnost 65 %.</p>
