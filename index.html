@@ -524,6 +524,21 @@
 .back-link {
     display: none; 
 }
+/* --- ÚPRAVA PATIČKY --- */
+footer {
+    margin: 40px 20px 20px 20px; /* Odsazení: Nahoře, Vpravo, Dole, Vlevo */
+    padding: 20px;
+    background-color: #f1f1f1; /* Jemně šedé pozadí pro odlišení */
+    border-radius: var(--border-radius); /* Zaoblené rohy */
+    text-align: center;
+    border: 1px solid #e0e0e0;
+}
+
+footer p {
+    margin: 5px 0;
+    font-size: 0.9rem;
+    color: #666;
+}
 
     </style>
 </head>
@@ -2059,7 +2074,8 @@ Jak to funguje: Rozprava nad přečtenými texty a schopnost estetické reflexe 
     <button id="backToTopBtn" onclick="scrollToTop()" title="Zpět na rozcestník">↑</button>
 
 <footer>
-    <p>© 2026 | Vygenerováno v Gemini Pro pod promptovým vedením Mgr. Jaroslava Svobody, údaje byly zpětně ručně kontrolovány</p>
+    <p>Počet návštěv: <span id="informace_k_vysokym_skolam" style="font-weight: bold; color: var(--accent);">Načítám...</span></p>
+    <p>© 2026 | Vygenerováno v Gemini Pro pod promptovým vedením <a href="https://www.spse.cz/" target="_blank">Mgr. Jaroslava Svobody ze SPŠE a VOŠ Pardubice</a>, údaje byly ručně kontrolovány</p>
 </footer>
 
 
@@ -2067,6 +2083,20 @@ Jak to funguje: Rozprava nad přečtenými texty a schopnost estetické reflexe 
 <script>
     /* --- 1. GLOBÁLNÍ PROMĚNNÉ --- */
     let searchIndex = [];
+    document.addEventListener("DOMContentLoaded", () => {
+        const counterElement = document.getElementById("informace_k_vysokym_skolam");
+        if (counterElement) {
+            fetch("https://api.counterapi.dev/v1/informace_k_vysokym_skolam/visits/up")
+                .then(response => response.json())
+                .then(data => {
+                    counterElement.innerText = data.count;
+                })
+                .catch(error => {
+                    console.error("Chyba počitadla:", error);
+                    counterElement.innerText = "N/A"; 
+                });
+        }
+    });
 
     function removeAccents(str) {
         if (!str) return "";
